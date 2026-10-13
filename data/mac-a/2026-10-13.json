@@ -1,34 +1,34 @@
 {
   "ccusageVersion": "20.0.30",
-  "collectedAt": "2026-10-13T04:00:11Z",
+  "collectedAt": "2026-10-13T13:00:13Z",
   "date": "2026-10-13",
   "host": "mac-a",
   "sources": {
     "claude": {
-      "cacheCreation": 2968621,
-      "cacheRead": 111416469,
-      "costUSD": 46.633297,
-      "input": 1006,
+      "cacheCreation": 5777120,
+      "cacheRead": 238037116,
+      "costUSD": 97.576739,
+      "input": 1914,
       "models": {
         "claude-opus-5-5": {
-          "cacheCreation": 2901488,
-          "cacheRead": 111052848,
-          "costUSD": 46.423971,
-          "input": 990,
-          "output": 198770,
-          "total": 114154096
+          "cacheCreation": 5618470,
+          "cacheRead": 236169088,
+          "costUSD": 96.970554,
+          "input": 1850,
+          "output": 485791,
+          "total": 242275199
         },
         "claude-sonnet-5-5": {
-          "cacheCreation": 67133,
-          "cacheRead": 363621,
-          "costUSD": 0.209327,
-          "input": 16,
-          "output": 510,
-          "total": 431280
+          "cacheCreation": 158650,
+          "cacheRead": 1868028,
+          "costUSD": 0.606186,
+          "input": 64,
+          "output": 2263,
+          "total": 2029005
         }
       },
-      "output": 199280,
-      "total": 114585376
+      "output": 488054,
+      "total": 244304204
     },
     "codex": {
       "cacheCreation": 0,
