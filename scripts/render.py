@@ -1025,6 +1025,21 @@ def write_summary(path, rows, days):
                  ["{:,}".format((day.get(s) or {}).get("total", 0)) for s in srcs] +
                  ["${:,.2f}".format((day.get(s) or {}).get("costUSD", 0.0)) for s in srcs])
         lines.append("| " + " | ".join(cells) + " |")
+
+    # model breakdown — the table twin of charts/model/*.svg
+    model_tot = {}
+    for date_str, day in days.items():
+        for s in srcs:
+            for model, mp in ((day.get(s) or {}).get("models") or {}).items():
+                model_tot[model] = model_tot.get(model, 0) + (mp.get("total") or 0)
+    if model_tot:
+        lines += ["", "## By model", "",
+                  "| Model | Tokens | Share |",
+                  "|---|--:|--:|"]
+        grand = sum(model_tot.values()) or 1
+        for model, t in sorted(model_tot.items(), key=lambda kv: (-kv[1], kv[0])):
+            lines.append("| {} | {:,} | {:.1f}% |".format(model, t, 100.0 * t / grand))
+
     lines += ["", "Full day-by-day history lives in `data/<host>/<date>.json`.", ""]
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines))

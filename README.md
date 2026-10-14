@@ -214,6 +214,15 @@ This fork tracks **four** AI coding tools in one timeline, not just Claude Code 
 - **Renderer:** the series set is read from `config.json` (then narrowed to sources that actually have data), and every chart — bars, area, calendar, card, ledger, pixel, terminal, sketch, badges — follows. Each source gets a stable, labeled color (identity is never color-alone).
 - **Adding a source:** add it to `sources`, run `python scripts/collect.py --all`, then `python scripts/render.py`.
 
+### Model-level charts
+
+The data carries a second dimension — which **model** did the work, not just which tool. Two charts surface it, so a model that dominated a stretch of months is visible even when it ran inside a tool that also ran others:
+
+- `charts/model/bar-tokens.svg` — every model ranked by tokens, colored by the tool that ran it
+- `charts/model/monthly.svg` — monthly tokens stacked by model, so a model's era is legible at a glance
+
+`SUMMARY.md` carries the same numbers as a table.
+
 ## How multi-host works
 
 Each machine reads **only its own local logs** and writes to its own directory:
