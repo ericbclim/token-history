@@ -1,0 +1,54 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-09-02",
+  "host": "win-a",
+  "sources": {
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 1958656,
+      "costUSD": 0.0,
+      "input": 435869,
+      "models": {
+        "kimi-k3": {
+          "cacheCreation": 0,
+          "cacheRead": 1958656,
+          "costUSD": 0.0,
+          "input": 435869,
+          "output": 6379,
+          "total": 2400904
+        }
+      },
+      "output": 6379,
+      "total": 2400952
+    },
+    "kimi": {
+      "cacheCreation": 0,
+      "cacheRead": 0,
+      "costUSD": 1.933385,
+      "input": 496959,
+      "models": {
+        "k3": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 1.072688,
+          "input": 224105,
+          "output": 2854,
+          "total": 226959
+        },
+        "tonyren/kimi-k3": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.860697,
+          "input": 272854,
+          "output": 2809,
+          "total": 275663
+        }
+      },
+      "output": 5663,
+      "total": 502622
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-05-24",
+  "host": "win-a",
+  "sources": {
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 46010304,
+      "costUSD": 0.0,
+      "input": 1831001,
+      "models": {
+        "mimo-v2.5-pro": {
+          "cacheCreation": 0,
+          "cacheRead": 46010304,
+          "costUSD": 0.0,
+          "input": 1831001,
+          "output": 137874,
+          "total": 47979179
+        }
+      },
+      "output": 137874,
+      "total": 48023080
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

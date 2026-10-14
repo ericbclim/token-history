@@ -1,0 +1,46 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-09-21",
+  "host": "win-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 1545984,
+      "costUSD": 0.0,
+      "input": 125609,
+      "models": {
+        "kimi-k3-1": {
+          "cacheCreation": 0,
+          "cacheRead": 1545984,
+          "costUSD": 0.0,
+          "input": 125609,
+          "output": 20406,
+          "total": 1691999
+        }
+      },
+      "output": 20406,
+      "total": 1694876
+    },
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 345088,
+      "costUSD": 0.0,
+      "input": 119979,
+      "models": {
+        "kimi-k3-1": {
+          "cacheCreation": 0,
+          "cacheRead": 345088,
+          "costUSD": 0.0,
+          "input": 119979,
+          "output": 1897,
+          "total": 466964
+        }
+      },
+      "output": 1897,
+      "total": 468249
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

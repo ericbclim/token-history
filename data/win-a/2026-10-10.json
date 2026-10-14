@@ -1,0 +1,44 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-10-10",
+  "host": "win-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 6353523,
+      "costUSD": 0.341912,
+      "input": 689718,
+      "models": {
+        "auto": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.011042,
+          "input": 12974,
+          "output": 9,
+          "total": 12983
+        },
+        "qwen3.8-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 6353523,
+          "costUSD": 0.33087,
+          "input": 665216,
+          "output": 195625,
+          "total": 7214364
+        },
+        "ultimate": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 11528,
+          "output": 11,
+          "total": 11539
+        }
+      },
+      "output": 195645,
+      "total": 7318647
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

@@ -126,13 +126,12 @@ def build_all(days, generated):
     today = tokens[-1] if tokens else 0
     active = sum(1 for t in tokens if t > 0)
     avg = total30 / float(active) if active else 0
-    claude30 = sum(r["claude"]["total"] for r in rows)
-    codex30 = sum(r["codex"]["total"] for r in rows)
-    if claude30 + codex30 > 0:
-        claude_pct = int(round(100.0 * claude30 / (claude30 + codex30)))
-    else:
-        claude_pct = 0
-    codex_pct = 100 - claude_pct if claude30 + codex30 > 0 else 0
+    src_totals = {s: sum(r[s]["total"] for r in rows) for s, _ in render.SERIES}
+    src_sum = sum(src_totals.values()) or 1.0
+    # one share segment per source, in the repo's categorical colors
+    split_segs = [("{}%".format(int(round(100.0 * src_totals[s] / src_sum))),
+                   render.source_color(s, "light")) for s, _ in render.SERIES]
+    split_label = " / ".join(s for s, _ in render.SERIES)
 
     # active-day streak: consecutive recorded days with usage, ending on the
     # newest day in the record (a missing date breaks the streak)
@@ -152,8 +151,7 @@ def build_all(days, generated):
          [(render.compact_cost(cost30), BLUE)]),
         ("badge/daily-avg.svg", "daily avg",
          [(render.compact_tokens(avg), BLUE)]),
-        ("badge/split-30d.svg", "claude / codex",
-         [("{}%".format(claude_pct), ORANGE), ("{}%".format(codex_pct), BLUE)]),
+        ("badge/split-30d.svg", split_label, split_segs),
         ("badge/streak.svg", "streak",
          [("{} day{}".format(streak, "" if streak == 1 else "s"), GREEN)]),
     ]

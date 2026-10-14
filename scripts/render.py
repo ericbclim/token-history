@@ -35,6 +35,14 @@ import datetime as dt
 import glob
 import json
 import os
+import sys
+
+# Style plugins live in scripts/styles/*.py and do `import render`. When this
+# file runs as a script its module name is "__main__", so a bare `import render`
+# would load a SECOND copy of this module (with default SERIES) instead of the
+# one main() configures. Alias it so plugins always see this exact instance.
+if __name__ == "__main__":
+    sys.modules.setdefault("render", sys.modules["__main__"])
 
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(REPO_ROOT, "data")
@@ -80,6 +88,55 @@ THEME = {
         "ink3": "#141413", "ink4": "#141413",
     },
 }
+# Categorical palette for sources beyond the two brand accents. claude/codex
+# keep the validated Anthropic-derived values (THEME); every other source gets a
+# stable hue so a fork that tracks more CLIs still gets a distinct, LABELED
+# series. Identity is always carried by a text label too, never color alone.
+EXTRA_PALETTE = {
+    "light": {
+        "kilo": "#7a5ea8", "hermes": "#1f8a70", "kimi": "#b23a6b",
+        "gemini": "#2f6fb0", "opencode": "#8a6d1f", "qwen": "#a24b3a",
+        "antigravity": "#3f7d3f", "copilot": "#5a5a8c", "amp": "#c07a1f",
+        "droid": "#2f8a8a", "codebuff": "#8a3f7d", "goose": "#6b7a1f",
+        "openclaw": "#3f5f9c", "grok": "#9c5f3f", "zcode": "#5f7f5f",
+        "pi": "#7f5f9c",
+    },
+    "dark": {
+        "kilo": "#9b82c9", "hermes": "#34b39a", "kimi": "#d65c92",
+        "gemini": "#5b95d6", "opencode": "#c2a24a", "qwen": "#cf7a5f",
+        "antigravity": "#6fb36f", "copilot": "#8f8fc2", "amp": "#e0a44a",
+        "droid": "#5bc2c2", "codebuff": "#c26fb0", "goose": "#a3b34a",
+        "openclaw": "#6f8fd0", "grok": "#c28f6f", "zcode": "#8fb38f",
+        "pi": "#b08fce",
+    },
+}
+
+SOURCE_LABELS = {
+    "claude": "Claude Code", "codex": "Codex", "kilo": "Kilo Code",
+    "hermes": "Hermes", "kimi": "Kimi", "gemini": "Gemini CLI",
+    "opencode": "OpenCode", "qwen": "Qwen", "antigravity": "Antigravity",
+    "copilot": "Copilot", "amp": "Amp", "droid": "Droid",
+    "codebuff": "Codebuff", "goose": "Goose", "openclaw": "OpenClaw",
+    "grok": "Grok", "zcode": "ZCode", "pi": "Pi", "every-code": "Every Code",
+}
+
+
+def label_for(source):
+    return SOURCE_LABELS.get(source, source.replace("-", " ").title())
+
+
+def source_color(source, mode="light"):
+    """Resolve a series color for any source, in either color mode."""
+    theme = THEME[mode]
+    if source in ("claude", "codex"):
+        return theme[source]
+    return EXTRA_PALETTE[mode].get(source, theme["muted"])
+
+
+# Default series; main() rebuilds this from config.json's `sources` list (then
+# narrows it to sources that actually have data) so a fork can track any set of
+# CLIs the collector can normalize. Style modules read render.SERIES at call
+# time, so updating this module global before rendering is enough.
 SERIES = [("claude", "Claude Code"), ("codex", "Codex")]
 # Anthropic typography: Poppins for headings, Lora for body — with the brand's
 # own Arial/Georgia fallbacks, since <img>-embedded SVG cannot load webfonts.
@@ -136,9 +193,10 @@ def day_total(payload, metric="total"):
 
 
 def empty_bucket(start):
-    return {"start": start, "partial": False,
-            "claude": {"total": 0, "costUSD": 0.0, "models": {}},
-            "codex": {"total": 0, "costUSD": 0.0, "models": {}}}
+    bucket = {"start": start, "partial": False}
+    for source, _ in SERIES:
+        bucket[source] = {"total": 0, "costUSD": 0.0, "models": {}}
+    return bucket
 
 
 def fill_buckets(days, buckets, key):
@@ -329,14 +387,18 @@ def svg_start(w, h, title, extra_css=""):
     """Open an SVG with the shared theme: CSS vars for both color schemes, the
     text/series/ramp classes, and the reduced-motion kill switch."""
     light, dark = THEME["light"], THEME["dark"]
-    css_vars = lambda t: " ".join("--{}:{};".format(k, v) for k, v in t.items())
+    def vars_for(mode):
+        theme = THEME[mode]
+        parts = ["--{}:{};".format(k, v) for k, v in theme.items()]
+        parts += ["--s-{}:{};".format(s, source_color(s, mode)) for s, _ in SERIES]
+        return " ".join(parts)
     out = []
     add = out.append
     add('<svg xmlns="http://www.w3.org/2000/svg" width="{}" height="{}" '
         'viewBox="0 0 {} {}" role="img" aria-label="{}">'.format(w, h, w, h, esc(title)))
     add("<style>")
-    add("svg{{--f:{};--fs:{};--fm:{};{}}}".format(FONT, FONT_SERIF, FONT_MONO, css_vars(light)))
-    add("@media (prefers-color-scheme: dark){{svg{{{}}}}}".format(css_vars(dark)))
+    add("svg{{--f:{};--fs:{};--fm:{};{}}}".format(FONT, FONT_SERIF, FONT_MONO, vars_for("light")))
+    add("@media (prefers-color-scheme: dark){{svg{{{}}}}}".format(vars_for("dark")))
     add(".bg{fill:var(--surface)}")
     add(".grid{stroke:var(--grid);stroke-width:1;shape-rendering:crispEdges}")
     add(".axis{stroke:var(--axis);stroke-width:1;shape-rendering:crispEdges}")
@@ -345,7 +407,7 @@ def svg_start(w, h, title, extra_css=""):
     add(".tm{font-family:var(--f);fill:var(--muted);font-variant-numeric:tabular-nums}")
     add(".ts{font-family:var(--fs);fill:var(--primary)}")
     add(".tn{font-family:var(--fm);fill:var(--primary);font-variant-numeric:tabular-nums}")
-    add(".s-claude{fill:var(--claude)}.s-codex{fill:var(--codex)}")
+    add("".join(".s-{}{{fill:var(--s-{})}}".format(s, s) for s, _ in SERIES))
     add(".r0{fill:var(--ramp0)}.r1{fill:var(--ramp1)}.r2{fill:var(--ramp2)}"
         ".r3{fill:var(--ramp3)}.r4{fill:var(--ramp4)}")
     add(".on3{fill:var(--ink3)}.on4{fill:var(--ink4)}")
@@ -531,13 +593,7 @@ def build_day_calendar(days, generated):
 # --------------------------------------------------- style: stacked area (day)
 
 
-AREA_CSS = (
-    ".ga1{stop-color:var(--claude);stop-opacity:.45}"
-    ".ga2{stop-color:var(--claude);stop-opacity:.05}"
-    ".gb1{stop-color:var(--codex);stop-opacity:.45}"
-    ".gb2{stop-color:var(--codex);stop-opacity:.05}"
-    ".e-claude{stroke:var(--claude);stroke-width:2;fill:none;stroke-linejoin:round}"
-    ".e-codex{stroke:var(--codex);stroke-width:2;fill:none;stroke-linejoin:round}"
+AREA_CSS_STATIC = (
     ".gridd{stroke:var(--grid);stroke-width:1;stroke-dasharray:2 4}"
     ".dot{stroke:var(--surface);stroke-width:2}"
     ".rise{animation:rise .9s cubic-bezier(.2,.7,.3,1) both}"
@@ -545,6 +601,18 @@ AREA_CSS = (
     ".late{animation:fadein .5s ease-out .55s both}"
     "@keyframes fadein{from{opacity:0}to{opacity:1}}"
 )
+
+
+def area_css():
+    """Per-source gradient-stop and edge classes for the stacked area, built for
+    whatever sources SERIES currently holds."""
+    parts = [AREA_CSS_STATIC]
+    for source, _ in SERIES:
+        parts.append(".g{0}1{{stop-color:var(--s-{0});stop-opacity:.45}}".format(source))
+        parts.append(".g{0}2{{stop-color:var(--s-{0});stop-opacity:.05}}".format(source))
+        parts.append(".e-{0}{{stroke:var(--s-{0});stroke-width:2;fill:none;"
+                     "stroke-linejoin:round}}".format(source))
+    return "".join(parts)
 
 
 def build_area(rows, generated):
@@ -557,9 +625,13 @@ def build_area(rows, generated):
     n = len(rows)
     plot_w = W - pad_l - pad_r
 
-    claude_v = [r["claude"]["total"] for r in rows]
-    codex_v = [r["codex"]["total"] for r in rows]
-    totals = [c + x for c, x in zip(claude_v, codex_v)]
+    series_v = {s: [r[s]["total"] for r in rows] for s, _ in SERIES}
+    cum = []                              # cumulative stacks, one list per series
+    running = [0.0] * n
+    for s, _ in SERIES:
+        running = [running[i] + series_v[s][i] for i in range(n)]
+        cum.append(list(running))
+    totals = cum[-1] if cum else [0.0] * n
     peak = max(totals + [0])
     ticks = nice_ticks(peak)
     top = ticks[-1] or 1
@@ -570,22 +642,26 @@ def build_area(rows, generated):
     def y_of(value):
         return pad_t + plot_h - (value / float(top)) * plot_h
 
-    claude_pts = [(x_of(i), y_of(claude_v[i])) for i in range(n)]
-    top_pts = [(x_of(i), y_of(totals[i])) for i in range(n)]
+    def band_path(k):
+        upper = [(x_of(i), y_of(cum[k][i])) for i in range(n)]
+        lower_vals = cum[k - 1] if k > 0 else [0.0] * n
+        lower = [(x_of(i), y_of(lower_vals[i])) for i in range(n)]
+        return (smooth_path(upper) + ' ' +
+                smooth_path(list(reversed(lower))).replace('M', 'L', 1) + ' Z')
 
     span = "{} – {}".format(rows[0]["start"].strftime("%b %d, %Y"),
                             rows[-1]["start"].strftime("%b %d, %Y"))
     title = "Daily token flow"
     subtitle = "{} · {} tokens over {} days".format(span, compact_tokens(sum(totals)), n)
 
-    out = svg_start(W, h, title, AREA_CSS)
+    out = svg_start(W, h, title, area_css())
     add = out.append
 
     add('<defs>')
-    add('<linearGradient id="ga" x1="0" y1="0" x2="0" y2="1">'
-        '<stop offset="0" class="ga1"/><stop offset="1" class="ga2"/></linearGradient>')
-    add('<linearGradient id="gb" x1="0" y1="0" x2="0" y2="1">'
-        '<stop offset="0" class="gb1"/><stop offset="1" class="gb2"/></linearGradient>')
+    for source, _ in SERIES:
+        add('<linearGradient id="g-{0}" x1="0" y1="0" x2="0" y2="1">'
+            '<stop offset="0" class="g{0}1"/><stop offset="1" class="g{0}2"/>'
+            '</linearGradient>'.format(source))
     add('</defs>')
 
     add('<text class="ts" x="28" y="32" font-size="20" font-style="italic">{}</text>'.format(esc(title)))
@@ -602,15 +678,12 @@ def build_area(rows, generated):
     add('<line class="axis" x1="{}" y1="{:.1f}" x2="{}" y2="{:.1f}"/>'.format(pad_l, base_y, W - pad_r, base_y))
 
     # bands (animated as one group; resting state is fully visible)
-    claude_area = (smooth_path(claude_pts) +
-                   ' L{:.1f},{:.1f} L{:.1f},{:.1f} Z'.format(claude_pts[-1][0], base_y, claude_pts[0][0], base_y))
-    bottom_rev = smooth_path(list(reversed(claude_pts)))
-    codex_band = smooth_path(top_pts) + ' ' + bottom_rev.replace('M', 'L', 1) + ' Z'
     add('<g class="rise">')
-    add('<path fill="url(#ga)" d="{}"/>'.format(claude_area))
-    add('<path fill="url(#gb)" d="{}"/>'.format(codex_band))
-    add('<path class="e-claude" d="{}"/>'.format(smooth_path(claude_pts)))
-    add('<path class="e-codex" d="{}"/>'.format(smooth_path(top_pts)))
+    for k, (source, _) in enumerate(SERIES):
+        add('<path fill="url(#g-{0})" d="{1}"/>'.format(source, band_path(k)))
+    for k, (source, _) in enumerate(SERIES):
+        upper = [(x_of(i), y_of(cum[k][i])) for i in range(n)]
+        add('<path class="e-{0}" d="{1}"/>'.format(source, smooth_path(upper)))
     add('</g>')
 
     # x labels
@@ -623,17 +696,20 @@ def build_area(rows, generated):
     # right-edge direct labels (they are the legend: identity is text + swatch dot)
     add('<g class="late">')
     lab_x = W - pad_r + 12
-    y_claude = min(y_of(claude_v[-1] / 2.0), base_y - 24)
-    y_codex = y_of(claude_v[-1] + codex_v[-1] / 2.0)
-    if y_claude - y_codex < 44:
-        y_codex = y_claude - 44
-    for y, source, label, value in ((y_claude, "claude", "Claude Code", claude_v[-1]),
-                                    (y_codex, "codex", "Codex", codex_v[-1])):
+    ys = []
+    for k, (source, _) in enumerate(SERIES):
+        lo = cum[k - 1][-1] if k > 0 else 0.0
+        ys.append(y_of((lo + cum[k][-1]) / 2.0))
+    for k in range(1, len(ys)):                 # de-collide top-down, min 44px gap
+        if ys[k] > ys[k - 1] - 44.0:
+            ys[k] = ys[k - 1] - 44.0
+    for k, (source, label) in enumerate(SERIES):
+        y = min(max(ys[k], pad_t + 14), base_y - 24)
         add('<circle class="s-{} dot" cx="{}" cy="{:.1f}" r="4"/>'.format(source, lab_x, y))
         add('<text class="t2" x="{}" y="{:.1f}" font-size="12">{}</text>'.format(
             lab_x + 10, y + 4, esc(label)))
         add('<text class="tn" x="{}" y="{:.1f}" font-size="12.5" font-weight="600">{}</text>'.format(
-            lab_x + 10, y + 21, compact_tokens(value)))
+            lab_x + 10, y + 21, compact_tokens(series_v[source][-1])))
     # peak label
     if peak > 0:
         pi = totals.index(peak)
@@ -678,9 +754,8 @@ def build_card(rows, generated):
     peak = max(tokens + [0])
     peak_day = rows[tokens.index(peak)]["start"] if peak else None
     avg = total / float(active) if active else 0
-    ct = sum(r["claude"]["total"] for r in rows)
-    xt = sum(r["codex"]["total"] for r in rows)
-    share = ct / float(ct + xt) if (ct + xt) else 0.0
+    stotals = {s: sum(r[s]["total"] for r in rows) for s, _ in SERIES}
+    ssum = sum(stotals.values()) or 1.0
 
     title = "AI coding usage — last 30 days"
     out = svg_start(w, h, title, CARD_CSS)
@@ -709,19 +784,31 @@ def build_card(rows, generated):
         add('<text class="tm" x="{}" y="122" font-size="11">{}</text>'.format(x, esc(sub)))
         add('</g>')
 
-    # 100% split bar
+    # 100% split bar — one segment per source, proportional to its 30-day share
     bar_x, bar_y, bar_w, bar_h = 48, 176, w - 96, 9
-    cw = max(0.0, bar_w * share - GAP / 2.0)
-    xw = max(0.0, bar_w - cw - GAP)
     add('<g class="b" style="animation-delay:320ms">')
-    add('<path class="s-claude" d="{}"/>'.format(cap_path_h(bar_x, bar_y, cw, bar_h, 4.5, 0)))
-    add('<path class="s-codex" d="{}"/>'.format(cap_path_h(bar_x + cw + GAP, bar_y, xw, bar_h, 0, 4.5)))
-    add('<circle class="s-claude" cx="53" cy="203" r="4"/>')
-    add('<text class="t2" x="63" y="207" font-size="12">Claude Code {:.0f}% · {}</text>'.format(
-        share * 100, compact_tokens(ct)))
-    add('<circle class="s-codex" cx="{}" cy="203" r="4"/>'.format(w - 48 - 165))
-    add('<text class="t2" x="{}" y="207" font-size="12">Codex {:.0f}% · {}</text>'.format(
-        w - 48 - 155, (1 - share) * 100, compact_tokens(xt)))
+    cursor = bar_x
+    legend_y = 203
+    for k, (source, label) in enumerate(SERIES):
+        share = stotals[source] / ssum
+        last = (k == len(SERIES) - 1)
+        seg = bar_w - (cursor - bar_x) if last else max(0.0, bar_w * share - GAP / 2.0)
+        add('<path class="s-{0}" d="{1}"/>'.format(source, cap_path_h(
+            cursor, bar_y, max(0.0, seg), bar_h, 4.5 if k == 0 else 0,
+            4.5 if last else 0)))
+        cursor += seg + (0 if last else GAP)
+    # legend, left to right, wrapping to a second row if it gets crowded
+    lx, ly = bar_x + 5, legend_y
+    for source, label in SERIES:
+        text = "{} {:.0f}% · {}".format(label, stotals[source] / ssum * 100,
+                                        compact_tokens(stotals[source]))
+        est = 20 + len(text) * 6.6
+        if lx + est > w - 44 and lx > bar_x + 5:
+            lx, ly = bar_x + 5, legend_y + 20
+        add('<circle class="s-{}" cx="{}" cy="{}" r="4"/>'.format(source, lx, ly - 4))
+        add('<text class="t2" x="{}" y="{}" font-size="12">{}</text>'.format(
+            lx + 10, ly, esc(text)))
+        lx += est
     add('</g>')
 
     add('<text class="tm" x="48" y="{}" font-size="10">Generated {}</text>'.format(h - 10, generated))
@@ -905,6 +992,8 @@ def write_summary(path, rows, days):
     A chart must never be the only way to read a value — colour-blind readers,
     screen readers, and anyone on a text-only view need the numbers themselves.
     """
+    labels = [label for _, label in SERIES]
+    srcs = [s for s, _ in SERIES]
     lines = [
         "# Summary",
         "",
@@ -913,25 +1002,29 @@ def write_summary(path, rows, days):
         "",
         "## By bucket",
         "",
-        "| Starting | Claude tokens | Codex tokens | Total tokens | Claude $ | Codex $ | Total $ |",
-        "|---|--:|--:|--:|--:|--:|--:|",
+        "| Starting | " + " | ".join("{} tokens".format(l) for l in labels) +
+        " | Total tokens | " + " | ".join("{} $".format(l) for l in labels) + " | Total $ |",
+        "|---|" + "--:|" * (2 * len(SERIES) + 2),
     ]
     for row in reversed(rows):
-        ct, xt = row["claude"]["total"], row["codex"]["total"]
-        cc, xc = row["claude"]["costUSD"], row["codex"]["costUSD"]
+        toks = [row[s]["total"] for s in srcs]
+        costs = [row[s]["costUSD"] for s in srcs]
         mark = " *" if row["partial"] else ""
-        lines.append("| {}{} | {:,} | {:,} | {:,} | ${:,.2f} | ${:,.2f} | ${:,.2f} |".format(
-            row["start"].isoformat(), mark, ct, xt, ct + xt, cc, xc, cc + xc))
+        cells = ([row["start"].isoformat() + mark] +
+                 ["{:,}".format(t) for t in toks] + ["{:,}".format(sum(toks))] +
+                 ["${:,.2f}".format(c) for c in costs] + ["${:,.2f}".format(sum(costs))])
+        lines.append("| " + " | ".join(cells) + " |")
     lines += ["", "`*` still in progress.", "", "## Last 30 days", "",
-              "| Date | Claude tokens | Codex tokens | Claude $ | Codex $ |",
-              "|---|--:|--:|--:|--:|"]
+              "| Date | " + " | ".join("{} tokens".format(l) for l in labels) +
+              " | " + " | ".join("{} $".format(l) for l in labels) + " |",
+              "|---|" + "--:|" * (2 * len(SERIES))]
     for date_str in sorted(days, reverse=True)[:30]:
         day = days[date_str]
-        claude = day.get("claude") or {"total": 0, "costUSD": 0.0}
-        codex = day.get("codex") or {"total": 0, "costUSD": 0.0}
         mark = " *" if day.get("partial") else ""
-        lines.append("| {}{} | {:,} | {:,} | ${:,.2f} | ${:,.2f} |".format(
-            date_str, mark, claude["total"], codex["total"], claude["costUSD"], codex["costUSD"]))
+        cells = ([date_str + mark] +
+                 ["{:,}".format((day.get(s) or {}).get("total", 0)) for s in srcs] +
+                 ["${:,.2f}".format((day.get(s) or {}).get("costUSD", 0.0)) for s in srcs])
+        lines.append("| " + " | ".join(cells) + " |")
     lines += ["", "Full day-by-day history lives in `data/<host>/<date>.json`.", ""]
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("\n".join(lines))
@@ -991,6 +1084,41 @@ def bar_pair(rows, period, current, unit, generated, xfmt=None, bar_max=BAR_MAX)
     return tokens_svg, cost_svg
 
 
+def configure_series_from_config():
+    """Set the module-global SERIES from config.json's `sources`, keeping only
+    sources that actually have data.
+
+    A fork can track any CLIs its collector understands; the charts follow. When
+    no config is present (e.g. CI on a fork that only ships data/), the built-in
+    default stands, and sources found in the data are added so nothing collected
+    is silently ignored.
+    """
+    global SERIES
+    sources = None
+    try:
+        with open(os.path.join(REPO_ROOT, "config.json"), "r", encoding="utf-8") as fh:
+            sources = json.load(fh).get("sources")
+    except (OSError, ValueError):
+        sources = None
+    if sources:
+        SERIES = [(s, label_for(s)) for s in sources]
+
+    present = set()
+    for path in glob.glob(os.path.join(DATA_DIR, "*", "2*.json")):
+        try:
+            with open(path, "r", encoding="utf-8") as fh:
+                present.update((json.load(fh).get("sources") or {}).keys())
+        except (ValueError, OSError):
+            continue
+    if present:
+        known = {s for s, _ in SERIES}
+        for s in sorted(present - known):
+            SERIES.append((s, label_for(s)))
+        filtered = [(s, l) for s, l in SERIES if s in present]
+        if filtered:
+            SERIES = filtered
+
+
 def main():
     ap = argparse.ArgumentParser(description="Render the usage charts.")
     ap.add_argument("--days", type=int, default=DAYS, help="daily buckets (default)")
@@ -1002,6 +1130,9 @@ def main():
     if not days:
         print("no data under {}, nothing to render".format(DATA_DIR))
         return
+
+    configure_series_from_config()
+    print("series: " + ", ".join("{} ({})".format(s, l) for s, l in SERIES))
 
     generated = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
     last_data = max(dt.date.fromisoformat(d) for d in days)

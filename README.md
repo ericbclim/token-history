@@ -202,6 +202,18 @@ Every run renders **every** style below — the same data, over a dozen ways. Th
 
 <img src="./charts/month/calendar-tokens.svg" width="880" alt="Calendar page for the current month, each day shaded and labelled by its token total">
 
+## Multi-source (this fork)
+
+This fork tracks **four** AI coding tools in one timeline, not just Claude Code and Codex. The collector (`scripts/collect.py`) and renderer (`scripts/render.py`) were generalized to support any set of sources ccusage can read, driven by the `sources` list in `config.json`:
+
+```json
+"sources": ["claude", "kilo", "kimi", "hermes"]
+```
+
+- **Collector:** each source is fetched with its ccusage subcommand and normalized by record shape (the `modelBreakdowns` list used by Claude Code and most CLIs, or the `models` dict used by Codex), so a new source usually needs no code change — just add it to `config.json`.
+- **Renderer:** the series set is read from `config.json` (then narrowed to sources that actually have data), and every chart — bars, area, calendar, card, ledger, pixel, terminal, sketch, badges — follows. Each source gets a stable, labeled color (identity is never color-alone).
+- **Adding a source:** add it to `sources`, run `python scripts/collect.py --all`, then `python scripts/render.py`.
+
 ## How multi-host works
 
 Each machine reads **only its own local logs** and writes to its own directory:

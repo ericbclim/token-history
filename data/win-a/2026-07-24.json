@@ -1,0 +1,52 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-07-24",
+  "host": "win-a",
+  "sources": {
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 0,
+      "costUSD": 0.0,
+      "input": 27660,
+      "models": {
+        "deepseek-v4-pro": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 7267,
+          "output": 179,
+          "total": 7446
+        },
+        "glm-5.2-x": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 6696,
+          "output": 340,
+          "total": 7036
+        },
+        "kimi-k2.7": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 6533,
+          "output": 146,
+          "total": 6679
+        },
+        "kimi-k3": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 7164,
+          "output": 164,
+          "total": 7328
+        }
+      },
+      "output": 829,
+      "total": 28567
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

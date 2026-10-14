@@ -127,8 +127,9 @@ def ccusage_version(spec):
 
 def fetch_source(spec, source, since, until, tz_name):
     """Return {date: raw ccusage daily record} for one source."""
+    command = CCUSAGE_COMMAND.get(source, source)
     raw = run_ccusage(spec, [
-        source, "daily", "--json",
+        command, "daily", "--json",
         "--since", since.strftime("%Y%m%d"),
         "--until", until.strftime("%Y%m%d"),
         "--timezone", tz_name,
@@ -221,6 +222,33 @@ def normalize_codex(rec):
 
 
 NORMALIZERS = {"claude": normalize_claude, "codex": normalize_codex}
+
+# ccusage subcommand per configured source. Most sources use their own name;
+# aliases differ where ccusage's command name diverges from our source key.
+CCUSAGE_COMMAND = {
+    "claude": "claude", "codex": "codex", "every-code": "code",
+    "kilo": "kilo", "hermes": "hermes", "kimi": "kimi", "gemini": "gemini",
+    "qwen": "qwen", "opencode": "opencode", "antigravity": "antigravity",
+    "amp": "amp", "droid": "droid", "codebuff": "codebuff", "goose": "goose",
+    "copilot": "copilot", "openclaw": "openclaw", "grok": "grok",
+    "zcode": "zcode", "pi": "pi",
+}
+
+
+def normalize(source, rec):
+    """Normalize one ccusage daily record for `source`.
+
+    ccusage emits two record shapes: a `modelBreakdowns` list (Claude Code and
+    most other CLIs) and a `models` dict with top-level `costUSD` (Codex). We
+    pick by shape, so any new ccusage-supported CLI that uses either shape works
+    without a bespoke normalizer. A source with an explicit entry in NORMALIZERS
+    keeps its specialized handling.
+    """
+    if source in NORMALIZERS:
+        return NORMALIZERS[source](rec)
+    if rec.get("models") is not None and rec.get("modelBreakdowns") is None:
+        return normalize_codex(rec)
+    return normalize_claude(rec)
 
 
 # ------------------------------------------------------------------------ merge
@@ -354,8 +382,8 @@ def main():
 
     per_source = {}
     for source in cfg["sources"]:
-        if source not in NORMALIZERS:
-            die("unsupported source {!r} (known: {})".format(source, ", ".join(sorted(NORMALIZERS))))
+        if source not in CCUSAGE_COMMAND:
+            die("unsupported source {!r} (known: {})".format(source, ", ".join(sorted(CCUSAGE_COMMAND))))
         rows = fetch_source(spec, source, fetch_start, end, tz_name)
         per_source[source] = rows
         log("  {}: {} day(s) returned".format(source, len(rows)))
@@ -374,7 +402,7 @@ def main():
         sources = {}
         for source, rows in per_source.items():
             if date_str in rows:
-                sources[source] = NORMALIZERS[source](rows[date_str])
+                sources[source] = normalize(source, rows[date_str])
         if not sources:
             continue
 

@@ -1,0 +1,36 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-10-11",
+  "host": "win-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 12839212,
+      "costUSD": 0.539993,
+      "input": 432803,
+      "models": {
+        "deepseek-v4.1-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 11911936,
+          "costUSD": 0.472607,
+          "input": 292912,
+          "output": 222871,
+          "total": 12427719
+        },
+        "qwen3.8-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 927276,
+          "costUSD": 0.067387,
+          "input": 139891,
+          "output": 40418,
+          "total": 1107585
+        }
+      },
+      "output": 263289,
+      "total": 13730576
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

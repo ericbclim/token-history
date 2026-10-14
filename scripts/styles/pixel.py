@@ -138,7 +138,7 @@ def _tier_cell(add, key, x, y, size, blink="", label=None):
     The hole is painted rather than cut out, so the dashed gridline behind a
     column can never show through the middle of a pixel.
     """
-    cls = "s-" + key if key in ("claude", "codex") else "m-" + key
+    cls = "m-" + key if key in TIER_INDEX else "s-" + key
     title = "<title>{}</title>".format(render.esc(label)) if label else ""
     add('<rect class="px {}{}" x="{}" y="{}" width="{}" height="{}">{}</rect>'.format(
         cls, blink, x, y, size, size, title))
@@ -151,10 +151,10 @@ def _tier_cell(add, key, x, y, size, blink="", label=None):
 
 def _model_group(source, model):
     lowered = model.lower()
-    for key, label, needles in MODEL_GROUPS[source]:
+    for key, label, needles in MODEL_GROUPS.get(source, ()):
         if any(needle in lowered for needle in needles):
             return key, label
-    return source, source.upper()
+    return source, render.label_for(source).upper()
 
 
 def _source_pixels(source, payload, quantum):
@@ -168,6 +168,10 @@ def _source_pixels(source, payload, quantum):
     count = _ceil_div(total, quantum) if total > 0 else 0
     if not count:
         return []
+
+    if source not in MODEL_GROUPS:
+        # A source with no declared model tiers stays a single flat hue.
+        return [(source, render.label_for(source).upper())] * count
 
     grouped = {key: 0 for key, _, _ in MODEL_GROUPS[source]}
     labels = {key: label for key, label, _ in MODEL_GROUPS[source]}
@@ -253,10 +257,12 @@ def _source_legend(add, x, y):
 
 
 def _model_legend(add, x, y):
-    """Two compact legend rows make the within-source shade scale explicit."""
-    for row_idx, source in enumerate(("claude", "codex")):
+    """Compact legend rows make the within-source shade scale explicit. Only
+    sources that declare model tiers (Claude, Codex) get a row."""
+    tiered = [s for s, _ in render.SERIES if s in MODEL_GROUPS]
+    for row_idx, source in enumerate(tiered):
         cy = y + row_idx * 17
-        label = "CLAUDE" if source == "claude" else "CODEX"
+        label = render.label_for(source).upper()
         add('<text class="tm" x="{}" y="{}" font-size="9.5" '
             'font-family="var(--fm)" letter-spacing="1">{}</text>'.format(x, cy + 9, label))
         cursor = x + 62

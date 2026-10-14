@@ -24,19 +24,23 @@ PLOT_H = H - PAD_T - PAD_B
 
 FONT_HAND = '"Chalkboard SE","Comic Sans MS","Segoe Print","Bradley Hand",cursive'
 
-SKETCH_CSS = (
+SKETCH_CSS_STATIC = (
     ".hx{{font-family:{f};fill:var(--primary)}}"
     ".hx2{{font-family:{f};fill:var(--secondary)}}"
     ".hxm{{font-family:{f};fill:var(--muted)}}"
     ".ink{{stroke:var(--primary);fill:none;stroke-linecap:round;stroke-linejoin:round}}"
     ".ln{{fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}}"
-    ".lc{{stroke:var(--claude)}}"
-    ".lx{{stroke:var(--codex)}}"
     ".draw{{stroke-dasharray:3200;animation:dw 1.5s ease-out both}}"
     "@keyframes dw{{from{{stroke-dashoffset:3200}}to{{stroke-dashoffset:0}}}}"
     ".late{{animation:fi .5s ease-out 1.25s both}}"
     "@keyframes fi{{from{{opacity:0}}to{{opacity:1}}}}"
 ).format(f=FONT_HAND)
+
+
+def sketch_css():
+    """Per-source line colors, built for whatever SERIES holds."""
+    return SKETCH_CSS_STATIC + "".join(
+        ".l-{0}{{stroke:var(--s-{0})}}".format(s) for s, _ in render.SERIES)
 
 
 # ------------------------------------------------------------- seeded scribble
@@ -145,12 +149,12 @@ def _scribble_ellipse(cx, cy, rx, ry, tag):
 
 def _build_sketch(rows, generated):
     n = len(rows)
-    claude_v = [r["claude"]["total"] for r in rows]
-    codex_v = [r["codex"]["total"] for r in rows]
-    peak = max(claude_v + codex_v + [0])
+    series_v = {s: [r[s]["total"] for r in rows] for s, _ in render.SERIES}
+    all_v = [v for vals in series_v.values() for v in vals]
+    peak = max(all_v + [0])
     ticks = render.nice_ticks(peak)
     top = ticks[-1] or 1
-    grand = sum(claude_v) + sum(codex_v)
+    grand = sum(all_v)
     partial_last = bool(rows[-1].get("partial"))
 
     def x_of(i):
@@ -164,7 +168,7 @@ def _build_sketch(rows, generated):
     label = "Hand-drawn chart of daily AI coding token usage, {} to {}".format(
         rows[0]["start"].isoformat(), rows[-1]["start"].isoformat())
 
-    out = render.svg_start(W, H, label, SKETCH_CSS)
+    out = render.svg_start(W, H, label, sketch_css())
     add = out.append
     rot = _rng("labels")  # one stream for every casual text rotation
 
@@ -215,47 +219,45 @@ def _build_sketch(rows, generated):
         hand_text(x, base_y + 22, 12, rows[i]["start"].strftime("%b %d").upper(),
                   cls="hxm", anchor="middle")
 
-    # ---- the two wobbly lines (draw-in animation; resting state fully visible)
+    # ---- the wobbly lines (draw-in animation; resting state fully visible)
     series_geom = {}
-    for source, key, vals, cls, delay in (
-            ("claude", "lc", claude_v, "ln lc draw", "0s"),
-            ("codex", "lx", codex_v, "ln lx draw", ".3s")):
+    for si, (source, _) in enumerate(render.SERIES):
+        vals = series_v[source]
         pts = [(x_of(i), y_of(v)) for i, v in enumerate(vals)]
         series_geom[source] = pts
-        add('<path class="{}" style="animation-delay:{}" d="{}"/>'.format(
-            cls, delay, _sketch_path(pts, "line-" + source, amp=2.1, step=8.0,
-                                     overshoot=3.0)))
+        add('<path class="ln l-{} draw" style="animation-delay:{}s" d="{}"/>'.format(
+            source, si * 0.3, _sketch_path(pts, "line-" + source, amp=2.1, step=8.0,
+                                           overshoot=3.0)))
 
     # ---- direct hand-written labels at the line ends, with curvy arrows
     mark = "*" if partial_last else ""
-    end_c, end_x = y_of(claude_v[-1]), y_of(codex_v[-1])
     lab_x = PAD_L + PLOT_W + 34
-    y_c, y_x = end_c, end_x
-    if abs(y_c - y_x) < 42:  # push apart if the lines end close together
-        mid = (y_c + y_x) / 2.0
-        y_c, y_x = ((mid - 21, mid + 21) if y_c <= y_x else (mid + 21, mid - 21))
-    y_c = min(max(y_c, PAD_T + 12), base_y - 26)
-    y_x = min(max(y_x, PAD_T + 12), base_y - 26)
-    for source, name, val, ly, ey, stroke in (
-            ("claude", "CLAUDE CODE", claude_v[-1], y_c, end_c, "var(--claude)"),
-            ("codex", "CODEX", codex_v[-1], y_x, end_x, "var(--codex)")):
+    ends = [(y_of(series_v[s][-1]), s) for s, _ in render.SERIES]
+    ys = [e[0] for e in ends]
+    order = sorted(range(len(ys)), key=lambda i: ys[i])
+    for a in range(1, len(order)):
+        j, k = order[a - 1], order[a]
+        if ys[k] - ys[j] < 42:  # push apart if the lines end close together
+            ys[k] = ys[j] + 42
+    for i, (ey, source) in enumerate(ends):
+        ly = min(max(ys[i], PAD_T + 12), base_y - 26)
+        color = render.source_color(source, "light")
         d, ang = _curve_arrow(lab_x - 2, ly - 4, PAD_L + PLOT_W + 7, ey,
                               10.0 if ey > ly else -10.0)
         add('<g class="late">')
         add('<path fill="none" stroke="{}" stroke-width="1.6" stroke-linecap="round" '
-            'd="{}"/>'.format(stroke, d))
+            'd="{}"/>'.format(color, d))
         add('<path fill="none" stroke="{}" stroke-width="1.6" stroke-linecap="round" '
-            'd="{}"/>'.format(stroke, _arrowhead(PAD_L + PLOT_W + 7, ey, ang, 5.5)))
-        hand_text(lab_x + 4, ly - 6, 13, name, weight="700")
-        hand_text(lab_x + 4, ly + 10, 12, render.compact_tokens(val) + mark, cls="hx2")
+            'd="{}"/>'.format(color, _arrowhead(PAD_L + PLOT_W + 7, ey, ang, 5.5)))
+        hand_text(lab_x + 4, ly - 6, 13, render.label_for(source).upper(), weight="700")
+        hand_text(lab_x + 4, ly + 10, 12,
+                  render.compact_tokens(series_v[source][-1]) + mark, cls="hx2")
         add('</g>')
 
     # ---- xkcd annotation: scribble around the peak point + dry caption
     if peak > 0:
-        if peak in codex_v:
-            p_src, p_i = "codex", codex_v.index(peak)
-        else:
-            p_src, p_i = "claude", claude_v.index(peak)
+        p_src, p_i = next((s, series_v[s].index(peak)) for s, _ in render.SERIES
+                          if peak in series_v[s])
         px, py = x_of(p_i), y_of(peak)
         add('<g class="late">')
         add('<path class="ink" stroke-width="1.6" d="{}"/>'.format(

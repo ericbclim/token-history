@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-08-13",
+  "host": "win-a",
+  "sources": {
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 572160,
+      "costUSD": 0.0,
+      "input": 766286,
+      "models": {
+        "kimi-k3": {
+          "cacheCreation": 0,
+          "cacheRead": 572160,
+          "costUSD": 0.0,
+          "input": 766286,
+          "output": 35497,
+          "total": 1373943
+        }
+      },
+      "output": 35497,
+      "total": 1382820
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

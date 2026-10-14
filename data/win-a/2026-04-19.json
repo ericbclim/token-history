@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-04-19",
+  "host": "win-a",
+  "sources": {
+    "claude": {
+      "cacheCreation": 0,
+      "cacheRead": 0,
+      "costUSD": 0.0,
+      "input": 1033736,
+      "models": {
+        "qwen3.6:35b": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.0,
+          "input": 1033736,
+          "output": 2870,
+          "total": 1036606
+        }
+      },
+      "output": 2870,
+      "total": 1036606
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

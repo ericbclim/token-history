@@ -187,9 +187,7 @@ def _stats(days):
     tokens = [sum(r[s]["total"] for s, _ in render.SERIES) for r in rows]
     total = sum(tokens)
     cost = sum(sum(r[s]["costUSD"] for s, _ in render.SERIES) for r in rows)
-    ct = sum(r["claude"]["total"] for r in rows)
-    xt = sum(r["codex"]["total"] for r in rows)
-    share = ct / float(ct + xt) if (ct + xt) else 0.0
+    src_totals = {s: sum(r[s]["total"] for r in rows) for s, _ in render.SERIES}
     active = sum(1 for t in tokens if t > 0)
     peak = max(tokens + [0])
     peak_day = rows[tokens.index(peak)]["start"] if peak else None
@@ -202,7 +200,7 @@ def _stats(days):
             cur -= dt.timedelta(days=1)
     return {
         "rows": rows, "tokens": tokens, "total": total, "cost": cost,
-        "ct": ct, "xt": xt, "share": share, "active": active,
+        "src_totals": src_totals, "active": active,
         "peak": peak, "peak_day": peak_day, "avg": avg, "streak": streak,
         "today": tokens[-1] if tokens else 0,
         "partial": bool(rows and rows[-1]["partial"]),
@@ -244,13 +242,16 @@ def _build_card(days, generated):
     peak_s = render.compact_tokens(st["peak"])
     peak_d = st["peak_day"].strftime("%b %d").upper() if st["peak_day"] else "-"
     avg_s = render.compact_tokens(st["avg"])
-    pct_c = int(round(st["share"] * 100))
-    pct_x = 100 - pct_c if (st["ct"] + st["xt"]) else 0
+    src_sum = sum(st["src_totals"].values()) or 1.0
 
+    def _pct(tok):
+        return int(round(100.0 * tok / src_sum)) if src_sum else 0
+
+    split_txt = ", ".join("{} {} percent".format(l, _pct(st["src_totals"][s]))
+                          for s, l in render.SERIES)
     aria = ("AI coding usage, retro game HUD, last 30 days: {} tokens total, "
-            "about {} API-equivalent, Claude Code {} percent versus Codex {} "
-            "percent, best day {} on {}, {} of {} days active".format(
-                hero, render.compact_cost(st["cost"]), pct_c, pct_x,
+            "about {} API-equivalent, {}, best day {} on {}, {} of {} days active".format(
+                hero, render.compact_cost(st["cost"]), split_txt,
                 peak_s, peak_d.title(), st["active"], len(st["rows"])))
 
     out = render.svg_start(w, h, aria, CARD_CSS)
@@ -282,25 +283,34 @@ def _build_card(days, generated):
         '<tspan class="val">{}</tspan> / {}</text>'.format(
             render.esc(peak_s), render.esc(peak_d)))
 
-    # ---- right: two player HP bars = share of combined tokens
+    # ---- right: player HP bars, one per source = share of combined tokens
     bx, bxe = 470, 836
     cells, cell_w, cell_h = 20, 16, 16
-    filled_c = int(round(cells * st["share"])) if (st["ct"] + st["xt"]) else 0
-    filled_x = cells - filled_c if (st["ct"] + st["xt"]) else 0
-    for y_lbl, y_bar, series, name, filled, tok, pct in (
-            (44, 62, "claude", "P1 CLAUDE", filled_c, st["ct"], pct_c),
-            (104, 122, "codex", "P2 CODEX", filled_x, st["xt"], pct_x)):
-        _ptext(add, bx, y_lbl, name, 2, cls="ink")
+    right = list(render.SERIES)[:4]
+    # ≤2 sources keep the roomy original spacing; 3-4 rows need a tighter pitch
+    # (each row is a 14px label band + 16px bar, so ~34px keeps them apart).
+    start_y = 44 if len(right) <= 2 else 40
+    pitch = 60 if len(right) <= 2 else 34
+    for i, (series, label) in enumerate(right):
+        tok = st["src_totals"][series]
+        y_lbl = start_y + i * pitch
+        y_bar = y_lbl + 18
+        filled = int(round(cells * (tok / src_sum))) if src_sum else 0
+        _ptext(add, bx, y_lbl, "P{} {}".format(i + 1, label.upper()), 2, cls="ink")
         add('<text class="val" x="{}" y="{}" font-size="12" text-anchor="end">'
             '{} / {}%</text>'.format(bxe, y_lbl + 12, render.esc(
-                render.compact_tokens(tok)), pct))
+                render.compact_tokens(tok)), _pct(tok)))
         _hp_bar(add, bx, y_bar, cells, filled, cell_w, cell_h, series)
+    if len(render.SERIES) > 4:
+        add('<text class="lbl" x="{}" y="{}" font-size="10">+{} MORE</text>'.format(
+            bx, start_y + 4 * pitch + 6, len(render.SERIES) - 4))
 
-    # daily average, right column
-    _sprite(add, BARS, bx, 162, 2, cls="mut")
-    add('<text class="sub" x="{}" y="172" font-size="11">AVG '
+    # daily average, right column, below the bars
+    avg_y = start_y + len(right) * pitch + 4
+    _sprite(add, BARS, bx, avg_y, 2, cls="mut")
+    add('<text class="sub" x="{}" y="{}" font-size="11">AVG '
         '<tspan class="val">{}</tspan> / ACTIVE DAY</text>'.format(
-            bx + 16, render.esc(avg_s)))
+            bx + 16, avg_y + 10, render.esc(avg_s)))
 
     # ---- bottom band: one heart per day (filled = active), streak, PRESS START
     hx, hy, pitch = 44, 206, 18

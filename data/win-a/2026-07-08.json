@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-07-08",
+  "host": "win-a",
+  "sources": {
+    "kilo": {
+      "cacheCreation": 0,
+      "cacheRead": 5984256,
+      "costUSD": 0.0,
+      "input": 1530216,
+      "models": {
+        "glm-5.2-x": {
+          "cacheCreation": 0,
+          "cacheRead": 5984256,
+          "costUSD": 0.0,
+          "input": 1530216,
+          "output": 49722,
+          "total": 7564194
+        }
+      },
+      "output": 49722,
+      "total": 7564194
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}

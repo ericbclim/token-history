@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.31",
+  "collectedAt": "2026-10-14T06:11:40Z",
+  "date": "2026-10-12",
+  "host": "win-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 1269120,
+      "costUSD": 0.075876,
+      "input": 104598,
+      "models": {
+        "deepseek-v4.1-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 1269120,
+          "costUSD": 0.075876,
+          "input": 104598,
+          "output": 35838,
+          "total": 1409556
+        }
+      },
+      "output": 35838,
+      "total": 1436076
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Shanghai"
+}
