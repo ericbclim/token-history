@@ -1085,24 +1085,15 @@ def bar_pair(rows, period, current, unit, generated, xfmt=None, bar_max=BAR_MAX)
 
 
 def configure_series_from_config():
-    """Set the module-global SERIES from config.json's `sources`, keeping only
-    sources that actually have data.
+    """Set the module-global SERIES to the sources that actually have data.
 
-    A fork can track any CLIs its collector understands; the charts follow. When
-    no config is present (e.g. CI on a fork that only ships data/), the built-in
-    default stands, and sources found in the data are added so nothing collected
-    is silently ignored.
+    Order is deterministic and derived from the DATA, not from config.json, so a
+    CI render (which has no config.json) produces byte-identical charts to a
+    local render: Claude and Codex keep their traditional leading slots, every
+    other source follows in alphabetical order. config.json's `sources` list is
+    only a fallback for when there is no data yet (e.g. a fresh fork).
     """
     global SERIES
-    sources = None
-    try:
-        with open(os.path.join(REPO_ROOT, "config.json"), "r", encoding="utf-8") as fh:
-            sources = json.load(fh).get("sources")
-    except (OSError, ValueError):
-        sources = None
-    if sources:
-        SERIES = [(s, label_for(s)) for s in sources]
-
     present = set()
     for path in glob.glob(os.path.join(DATA_DIR, "*", "2*.json")):
         try:
@@ -1110,13 +1101,20 @@ def configure_series_from_config():
                 present.update((json.load(fh).get("sources") or {}).keys())
         except (ValueError, OSError):
             continue
+
     if present:
-        known = {s for s, _ in SERIES}
-        for s in sorted(present - known):
-            SERIES.append((s, label_for(s)))
-        filtered = [(s, l) for s, l in SERIES if s in present]
-        if filtered:
-            SERIES = filtered
+        canon = {"claude": 0, "codex": 1}
+        ordered = sorted(present, key=lambda s: (canon.get(s, 2), s))
+        SERIES = [(s, label_for(s)) for s in ordered]
+        return
+
+    try:
+        with open(os.path.join(REPO_ROOT, "config.json"), "r", encoding="utf-8") as fh:
+            sources = json.load(fh).get("sources")
+    except (OSError, ValueError):
+        sources = None
+    if sources:
+        SERIES = [(s, label_for(s)) for s in sources]
 
 
 def main():
