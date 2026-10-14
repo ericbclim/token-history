@@ -387,9 +387,14 @@ def svg_start(w, h, title, extra_css=""):
     """Open an SVG with the shared theme: CSS vars for both color schemes, the
     text/series/ramp classes, and the reduced-motion kill switch."""
     light, dark = THEME["light"], THEME["dark"]
+    active = {s for s, _ in SERIES}
+
     def vars_for(mode):
         theme = THEME[mode]
-        parts = ["--{}:{};".format(k, v) for k, v in theme.items()]
+        # drop the claude/codex base vars entirely when neither is a tracked
+        # source, so a fork that uses other tools carries no trace of them
+        parts = ["--{}:{};".format(k, v) for k, v in theme.items()
+                 if k not in ("claude", "codex") or k in active]
         parts += ["--s-{}:{};".format(s, source_color(s, mode)) for s, _ in SERIES]
         return " ".join(parts)
     out = []

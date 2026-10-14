@@ -382,9 +382,15 @@ def build_all(days, generated):
     Two charts off one geometry: the plain source stack, and the model-split
     twin. The split one is additive - it never replaces pixel-tokens.svg, so a
     README can embed either without inheriting the other's legend.
+
+    The model-split twin only makes sense when a tracked source carries model
+    tiers (Claude Code / Codex). When none does, it is skipped rather than
+    rendered as a duplicate of the plain chart dragging in an unused palette.
     """
     rows = render.bucket(days, render.DAYS)
     if not rows:
         return []
-    return [("day/pixel-tokens.svg", _build_pixel(rows, generated, False)),
-            ("day/pixel-models.svg", _build_pixel(rows, generated, True))]
+    out = [("day/pixel-tokens.svg", _build_pixel(rows, generated, False))]
+    if any(s in MODEL_GROUPS for s, _ in render.SERIES):
+        out.append(("day/pixel-models.svg", _build_pixel(rows, generated, True)))
+    return out
