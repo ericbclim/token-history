@@ -83,16 +83,22 @@ def today_in(tz_name):
     """Today's calendar date in the configured timezone.
 
     Uses `zoneinfo` when available (py3.9+ with tzdata), else shells out to
-    `date` with TZ set, which is always correct on macOS/Linux.
+    `date` with TZ set, which is always correct on macOS/Linux. On Windows the
+    `date` binary is absent, so fall back to the local wall-clock date rather
+    than crashing the whole run (a missing tzdata used to do exactly that).
     """
     try:
         from zoneinfo import ZoneInfo
 
         return dt.datetime.now(ZoneInfo(tz_name)).date()
     except Exception:
+        pass
+    try:
         env = dict(os.environ, TZ=tz_name)
         out = subprocess.check_output(["date", "+%Y-%m-%d"], env=env).decode().strip()
         return dt.date.fromisoformat(out)
+    except Exception:
+        return dt.datetime.now().date()
 
 
 def daterange(start, end):
