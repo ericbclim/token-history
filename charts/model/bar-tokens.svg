@@ -18,7 +18,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 </style>
 <rect class="bg" width="880" height="576"/>
 <text class="ts" x="28" y="32" font-size="20" font-style="italic">Tokens by model</text>
-<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-10-19 · 19 models · 569M tokens</text>
+<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-10-20 · 20 models · 571M tokens</text>
 <rect class="s-hermes" x="28" y="64" width="10" height="10" rx="2"/>
 <text class="t2" x="44" y="73" font-size="12">Hermes</text>
 <rect class="s-kilo" x="92" y="64" width="10" height="10" rx="2"/>
@@ -29,12 +29,12 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="t" x="28" y="135.0" font-size="12.5" font-weight="700">mimo-v2.5-pro</text>
 <path class="s-kilo" d="M306.0,124.5 H696.0 A6.0,6.0 0 0 1 702.0,130.5 V131.5 A6.0,6.0 0 0 1 696.0,137.5 H306.0 A6.0,6.0 0 0 1 300.0,131.5 V130.5 A6.0,6.0 0 0 1 306.0,124.5 Z"/>
 <text class="tm" x="852" y="135.0" font-size="12" text-anchor="end">183M</text>
-<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">32.1%</text>
+<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">32.0%</text>
 <line class="grid" x1="28" y1="170" x2="852" y2="170"/>
 <text class="t2" x="28" y="161.0" font-size="12.5">deepseek-v4.1-flash</text>
-<path class="s-hermes" d="M306.0,150.5 H574.0 A6.0,6.0 0 0 1 580.0,156.5 V157.5 A6.0,6.0 0 0 1 574.0,163.5 H306.0 A6.0,6.0 0 0 1 300.0,157.5 V156.5 A6.0,6.0 0 0 1 306.0,150.5 Z"/>
-<text class="tm" x="852" y="161.0" font-size="12" text-anchor="end">127M</text>
-<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">22.4%</text>
+<path class="s-hermes" d="M306.0,150.5 H578.4 A6.0,6.0 0 0 1 584.4,156.5 V157.5 A6.0,6.0 0 0 1 578.4,163.5 H306.0 A6.0,6.0 0 0 1 300.0,157.5 V156.5 A6.0,6.0 0 0 1 306.0,150.5 Z"/>
+<text class="tm" x="852" y="161.0" font-size="12" text-anchor="end">129M</text>
+<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">22.6%</text>
 <line class="grid" x1="28" y1="196" x2="852" y2="196"/>
 <text class="t2" x="28" y="187.0" font-size="12.5">kimi-k3-1</text>
 <path class="s-hermes" d="M306.0,176.5 H427.9 A6.0,6.0 0 0 1 433.9,182.5 V183.5 A6.0,6.0 0 0 1 427.9,189.5 H306.0 A6.0,6.0 0 0 1 300.0,183.5 V182.5 A6.0,6.0 0 0 1 306.0,176.5 Z"/>
@@ -74,7 +74,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="t2" x="28" y="369.0" font-size="12.5">fast-model</text>
 <path class="s-hermes" d="M306.0,358.5 H307.2 A6.0,6.0 0 0 1 313.2,364.5 V365.5 A6.0,6.0 0 0 1 307.2,371.5 H306.0 A6.0,6.0 0 0 1 300.0,365.5 V364.5 A6.0,6.0 0 0 1 306.0,358.5 Z"/>
 <text class="tm" x="852" y="369.0" font-size="12" text-anchor="end">6.0M</text>
-<text class="tm" x="852" y="381.0" font-size="11" text-anchor="end">1.1%</text>
+<text class="tm" x="852" y="381.0" font-size="11" text-anchor="end">1.0%</text>
 <line class="grid" x1="28" y1="404" x2="852" y2="404"/>
 <text class="t2" x="28" y="395.0" font-size="12.5">qwen3.8-max</text>
 <path class="s-hermes" d="M304.4,384.5 H304.4 A4.4,4.4 0 0 1 308.7,388.9 V393.1 A4.4,4.4 0 0 1 304.4,397.5 H304.4 A4.4,4.4 0 0 1 300.0,393.1 V388.9 A4.4,4.4 0 0 1 304.4,384.5 Z"/>
@@ -96,15 +96,15 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="473.0" font-size="12" text-anchor="end">227K</text>
 <text class="tm" x="852" y="485.0" font-size="11" text-anchor="end">0.0%</text>
 <line class="grid" x1="28" y1="508" x2="852" y2="508"/>
-<text class="t2" x="28" y="499.0" font-size="12.5">auto</text>
+<text class="t2" x="28" y="499.0" font-size="12.5">deepseek-flash</text>
 <path class="s-hermes" d="M300.5,488.5 H300.5 A0.5,0.5 0 0 1 301.0,489.0 V501.0 A0.5,0.5 0 0 1 300.5,501.5 H300.5 A0.5,0.5 0 0 1 300.0,501.0 V489.0 A0.5,0.5 0 0 1 300.5,488.5 Z"/>
-<text class="tm" x="852" y="499.0" font-size="12" text-anchor="end">13K</text>
+<text class="tm" x="852" y="499.0" font-size="12" text-anchor="end">194K</text>
 <text class="tm" x="852" y="511.0" font-size="11" text-anchor="end">0.0%</text>
 <line class="grid" x1="28" y1="534" x2="852" y2="534"/>
-<text class="t2" x="28" y="525.0" font-size="12.5">default-model</text>
+<text class="t2" x="28" y="525.0" font-size="12.5">auto</text>
 <path class="s-hermes" d="M300.5,514.5 H300.5 A0.5,0.5 0 0 1 301.0,515.0 V527.0 A0.5,0.5 0 0 1 300.5,527.5 H300.5 A0.5,0.5 0 0 1 300.0,527.0 V515.0 A0.5,0.5 0 0 1 300.5,514.5 Z"/>
-<text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">12K</text>
+<text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">13K</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.0%</text>
-<text class="tm" x="28" y="552" font-size="11">+3 more models (26K tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-10-19 16:30 UTC</text>
+<text class="tm" x="28" y="552" font-size="11">+4 more models (38K tokens)</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-10-20 04:00 UTC</text>
 </svg>
