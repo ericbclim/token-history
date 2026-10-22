@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.40",
+  "collectedAt": "2026-10-22T04:00:12Z",
+  "date": "2026-10-22",
+  "host": "win-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 0,
+      "costUSD": 0.056186,
+      "input": 135660,
+      "models": {
+        "deepseek-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 0,
+          "costUSD": 0.056186,
+          "input": 135660,
+          "output": 7625,
+          "total": 143285
+        }
+      },
+      "output": 7625,
+      "total": 148567
+    }
+  },
+  "status": "partial",
+  "timezone": "Asia/Shanghai"
+}
