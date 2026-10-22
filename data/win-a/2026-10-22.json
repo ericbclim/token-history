@@ -1,14 +1,14 @@
 {
   "ccusageVersion": "20.0.40",
-  "collectedAt": "2026-10-22T13:00:10Z",
+  "collectedAt": "2026-10-22T16:30:09Z",
   "date": "2026-10-22",
   "host": "win-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
-      "cacheRead": 684900,
-      "costUSD": 0.286249,
-      "input": 294811,
+      "cacheRead": 1629156,
+      "costUSD": 0.363923,
+      "input": 326738,
       "models": {
         "deepseek-flash": {
           "cacheCreation": 0,
@@ -17,12 +17,20 @@
           "input": 294811,
           "output": 85210,
           "total": 1064921
+        },
+        "deepseek-v4.1-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 944256,
+          "costUSD": 0.077674,
+          "input": 31927,
+          "output": 20795,
+          "total": 996978
         }
       },
-      "output": 85210,
-      "total": 1141125
+      "output": 106005,
+      "total": 2150448
     }
   },
-  "status": "partial",
+  "status": "final",
   "timezone": "Asia/Shanghai"
 }
