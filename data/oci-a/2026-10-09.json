@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.44",
+  "collectedAt": "2026-10-25T04:06:37Z",
+  "date": "2026-10-09",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 16413216,
+      "costUSD": 0.453899,
+      "input": 703760,
+      "models": {
+        "qwen3.8-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 16413216,
+          "costUSD": 0.453899,
+          "input": 703760,
+          "output": 182390,
+          "total": 17299366
+        }
+      },
+      "output": 182390,
+      "total": 17299366
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Hong_Kong"
+}

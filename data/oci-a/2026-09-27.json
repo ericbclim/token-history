@@ -1,0 +1,36 @@
+{
+  "ccusageVersion": "20.0.44",
+  "collectedAt": "2026-10-25T04:06:37Z",
+  "date": "2026-09-27",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 39341037,
+      "costUSD": 7.605878,
+      "input": 18476971,
+      "models": {
+        "deepseek-v4.1-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 38442221,
+          "costUSD": 7.144849,
+          "input": 18417778,
+          "output": 284167,
+          "total": 57144166
+        },
+        "kimi-k3-1": {
+          "cacheCreation": 0,
+          "cacheRead": 898816,
+          "costUSD": 0.461029,
+          "input": 59193,
+          "output": 13672,
+          "total": 971681
+        }
+      },
+      "output": 297839,
+      "total": 58222837
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Hong_Kong"
+}

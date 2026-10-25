@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.44",
+  "collectedAt": "2026-10-25T04:06:37Z",
+  "date": "2026-09-21",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 1545984,
+      "costUSD": 0.793245,
+      "input": 125609,
+      "models": {
+        "kimi-k3-1": {
+          "cacheCreation": 0,
+          "cacheRead": 1545984,
+          "costUSD": 0.793245,
+          "input": 125609,
+          "output": 20406,
+          "total": 1691999
+        }
+      },
+      "output": 20406,
+      "total": 1694876
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Hong_Kong"
+}

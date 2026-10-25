@@ -1,0 +1,60 @@
+{
+  "ccusageVersion": "20.0.44",
+  "collectedAt": "2026-10-25T04:06:37Z",
+  "date": "2026-10-02",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 12757078,
+      "costUSD": 3.605482,
+      "input": 14886369,
+      "models": {
+        "default-model": {
+          "cacheCreation": 0,
+          "cacheRead": 1792,
+          "costUSD": 0.0,
+          "input": 10514,
+          "output": 6,
+          "total": 12312
+        },
+        "fast-model": {
+          "cacheCreation": 0,
+          "cacheRead": 5741046,
+          "costUSD": 0.0,
+          "input": 225232,
+          "output": 29289,
+          "total": 5995567
+        },
+        "hy3": {
+          "cacheCreation": 0,
+          "cacheRead": 320896,
+          "costUSD": 1.839459,
+          "input": 12575923,
+          "output": 83984,
+          "total": 12980803
+        },
+        "hy4-preview-f": {
+          "cacheCreation": 0,
+          "cacheRead": 648256,
+          "costUSD": 1.553377,
+          "input": 1631693,
+          "output": 37288,
+          "total": 2317237
+        },
+        "qwen3.8-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 6045088,
+          "costUSD": 0.212647,
+          "input": 443007,
+          "output": 105264,
+          "total": 6593359
+        }
+      },
+      "output": 255831,
+      "total": 27952969
+    }
+  },
+  "status": "final",
+  "timezone": "Asia/Hong_Kong"
+}
