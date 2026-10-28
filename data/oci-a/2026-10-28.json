@@ -1,6 +1,6 @@
 {
   "ccusageVersion": "20.0.45",
-  "collectedAt": "2026-10-28T13:00:16Z",
+  "collectedAt": "2026-10-28T16:32:16Z",
   "date": "2026-10-28",
   "host": "oci-a",
   "sources": {
@@ -23,6 +23,6 @@
       "total": 4639693
     }
   },
-  "status": "partial",
+  "status": "final",
   "timezone": "Asia/Hong_Kong"
 }
