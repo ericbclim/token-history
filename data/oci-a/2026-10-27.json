@@ -1,19 +1,19 @@
 {
   "ccusageVersion": "20.0.45",
-  "collectedAt": "2026-10-28T16:32:16Z",
+  "collectedAt": "2026-10-29T04:01:16Z",
   "date": "2026-10-27",
   "host": "oci-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
       "cacheRead": 90326784,
-      "costUSD": 5.918338,
+      "costUSD": 3.840882,
       "input": 1892288,
       "models": {
         "deepseek-v4.1-flash": {
           "cacheCreation": 0,
           "cacheRead": 90326784,
-          "costUSD": 5.918338,
+          "costUSD": 3.840882,
           "input": 1892288,
           "output": 1252740,
           "total": 93471812
