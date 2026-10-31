@@ -28,56 +28,56 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <line class="grid" x1="28" y1="144" x2="852" y2="144"/>
 <text class="t" x="28" y="135.0" font-size="12.5" font-weight="700">deepseek-v4.1-flash</text>
 <path class="s-hermes" d="M306.0,124.5 H696.0 A6.0,6.0 0 0 1 702.0,130.5 V131.5 A6.0,6.0 0 0 1 696.0,137.5 H306.0 A6.0,6.0 0 0 1 300.0,131.5 V130.5 A6.0,6.0 0 0 1 306.0,124.5 Z"/>
-<text class="tm" x="852" y="135.0" font-size="12" text-anchor="end">513M</text>
-<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">45.5%</text>
+<text class="tm" x="852" y="135.0" font-size="12" text-anchor="end">524M</text>
+<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">46.0%</text>
 <line class="grid" x1="28" y1="170" x2="852" y2="170"/>
 <text class="t2" x="28" y="161.0" font-size="12.5">mimo-v2.5-pro</text>
-<path class="s-kilo" d="M306.0,150.5 H437.4 A6.0,6.0 0 0 1 443.4,156.5 V157.5 A6.0,6.0 0 0 1 437.4,163.5 H306.0 A6.0,6.0 0 0 1 300.0,157.5 V156.5 A6.0,6.0 0 0 1 306.0,150.5 Z"/>
+<path class="s-kilo" d="M306.0,150.5 H434.3 A6.0,6.0 0 0 1 440.3,156.5 V157.5 A6.0,6.0 0 0 1 434.3,163.5 H306.0 A6.0,6.0 0 0 1 300.0,157.5 V156.5 A6.0,6.0 0 0 1 306.0,150.5 Z"/>
 <text class="tm" x="852" y="161.0" font-size="12" text-anchor="end">183M</text>
-<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">16.2%</text>
+<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">16.1%</text>
 <line class="grid" x1="28" y1="196" x2="852" y2="196"/>
 <text class="t2" x="28" y="187.0" font-size="12.5">qwen3.8-flash</text>
-<path class="s-hermes" d="M306.0,176.5 H387.1 A6.0,6.0 0 0 1 393.1,182.5 V183.5 A6.0,6.0 0 0 1 387.1,189.5 H306.0 A6.0,6.0 0 0 1 300.0,183.5 V182.5 A6.0,6.0 0 0 1 306.0,176.5 Z"/>
+<path class="s-hermes" d="M306.0,176.5 H385.1 A6.0,6.0 0 0 1 391.1,182.5 V183.5 A6.0,6.0 0 0 1 385.1,189.5 H306.0 A6.0,6.0 0 0 1 300.0,183.5 V182.5 A6.0,6.0 0 0 1 306.0,176.5 Z"/>
 <text class="tm" x="852" y="187.0" font-size="12" text-anchor="end">119M</text>
-<text class="tm" x="852" y="199.0" font-size="11" text-anchor="end">10.5%</text>
+<text class="tm" x="852" y="199.0" font-size="11" text-anchor="end">10.4%</text>
 <line class="grid" x1="28" y1="222" x2="852" y2="222"/>
 <text class="t2" x="28" y="213.0" font-size="12.5">kimi-k3-1</text>
-<path class="s-hermes" d="M306.0,202.5 H379.6 A6.0,6.0 0 0 1 385.6,208.5 V209.5 A6.0,6.0 0 0 1 379.6,215.5 H306.0 A6.0,6.0 0 0 1 300.0,209.5 V208.5 A6.0,6.0 0 0 1 306.0,202.5 Z"/>
+<path class="s-hermes" d="M306.0,202.5 H377.7 A6.0,6.0 0 0 1 383.7,208.5 V209.5 A6.0,6.0 0 0 1 377.7,215.5 H306.0 A6.0,6.0 0 0 1 300.0,209.5 V208.5 A6.0,6.0 0 0 1 306.0,202.5 Z"/>
 <text class="tm" x="852" y="213.0" font-size="12" text-anchor="end">109M</text>
-<text class="tm" x="852" y="225.0" font-size="11" text-anchor="end">9.7%</text>
+<text class="tm" x="852" y="225.0" font-size="11" text-anchor="end">9.6%</text>
 <line class="grid" x1="28" y1="248" x2="852" y2="248"/>
 <text class="t2" x="28" y="239.0" font-size="12.5">glm-5.2-x</text>
-<path class="s-kilo" d="M306.0,228.5 H335.0 A6.0,6.0 0 0 1 341.0,234.5 V235.5 A6.0,6.0 0 0 1 335.0,241.5 H306.0 A6.0,6.0 0 0 1 300.0,235.5 V234.5 A6.0,6.0 0 0 1 306.0,228.5 Z"/>
+<path class="s-kilo" d="M306.0,228.5 H334.2 A6.0,6.0 0 0 1 340.2,234.5 V235.5 A6.0,6.0 0 0 1 334.2,241.5 H306.0 A6.0,6.0 0 0 1 300.0,235.5 V234.5 A6.0,6.0 0 0 1 306.0,228.5 Z"/>
 <text class="tm" x="852" y="239.0" font-size="12" text-anchor="end">52M</text>
 <text class="tm" x="852" y="251.0" font-size="11" text-anchor="end">4.6%</text>
 <line class="grid" x1="28" y1="274" x2="852" y2="274"/>
 <text class="t2" x="28" y="265.0" font-size="12.5">hy3</text>
-<path class="s-hermes" d="M306.0,254.5 H330.1 A6.0,6.0 0 0 1 336.1,260.5 V261.5 A6.0,6.0 0 0 1 330.1,267.5 H306.0 A6.0,6.0 0 0 1 300.0,261.5 V260.5 A6.0,6.0 0 0 1 306.0,254.5 Z"/>
+<path class="s-hermes" d="M306.0,254.5 H329.3 A6.0,6.0 0 0 1 335.3,260.5 V261.5 A6.0,6.0 0 0 1 329.3,267.5 H306.0 A6.0,6.0 0 0 1 300.0,261.5 V260.5 A6.0,6.0 0 0 1 306.0,254.5 Z"/>
 <text class="tm" x="852" y="265.0" font-size="12" text-anchor="end">46M</text>
-<text class="tm" x="852" y="277.0" font-size="11" text-anchor="end">4.1%</text>
+<text class="tm" x="852" y="277.0" font-size="11" text-anchor="end">4.0%</text>
 <line class="grid" x1="28" y1="300" x2="852" y2="300"/>
 <text class="t2" x="28" y="291.0" font-size="12.5">glm-5.3-flash</text>
-<path class="s-hermes" d="M306.0,280.5 H326.4 A6.0,6.0 0 0 1 332.4,286.5 V287.5 A6.0,6.0 0 0 1 326.4,293.5 H306.0 A6.0,6.0 0 0 1 300.0,287.5 V286.5 A6.0,6.0 0 0 1 306.0,280.5 Z"/>
+<path class="s-hermes" d="M306.0,280.5 H325.7 A6.0,6.0 0 0 1 331.7,286.5 V287.5 A6.0,6.0 0 0 1 325.7,293.5 H306.0 A6.0,6.0 0 0 1 300.0,287.5 V286.5 A6.0,6.0 0 0 1 306.0,280.5 Z"/>
 <text class="tm" x="852" y="291.0" font-size="12" text-anchor="end">41M</text>
-<text class="tm" x="852" y="303.0" font-size="11" text-anchor="end">3.7%</text>
+<text class="tm" x="852" y="303.0" font-size="11" text-anchor="end">3.6%</text>
 <line class="grid" x1="28" y1="326" x2="852" y2="326"/>
 <text class="t2" x="28" y="317.0" font-size="12.5">kimi-k3</text>
-<path class="s-kilo" d="M306.0,306.5 H312.6 A6.0,6.0 0 0 1 318.6,312.5 V313.5 A6.0,6.0 0 0 1 312.6,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
+<path class="s-kilo" d="M306.0,306.5 H312.2 A6.0,6.0 0 0 1 318.2,312.5 V313.5 A6.0,6.0 0 0 1 312.2,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
 <text class="tm" x="852" y="317.0" font-size="12" text-anchor="end">24M</text>
 <text class="tm" x="852" y="329.0" font-size="11" text-anchor="end">2.1%</text>
 <line class="grid" x1="28" y1="352" x2="852" y2="352"/>
 <text class="t2" x="28" y="343.0" font-size="12.5">step-5-preview</text>
-<path class="s-hermes" d="M305.2,332.5 H305.2 A5.2,5.2 0 0 1 310.3,337.7 V340.3 A5.2,5.2 0 0 1 305.2,345.5 H305.2 A5.2,5.2 0 0 1 300.0,340.3 V337.7 A5.2,5.2 0 0 1 305.2,332.5 Z"/>
+<path class="s-hermes" d="M305.1,332.5 H305.1 A5.1,5.1 0 0 1 310.1,337.6 V340.4 A5.1,5.1 0 0 1 305.1,345.5 H305.1 A5.1,5.1 0 0 1 300.0,340.4 V337.6 A5.1,5.1 0 0 1 305.1,332.5 Z"/>
 <text class="tm" x="852" y="343.0" font-size="12" text-anchor="end">13M</text>
 <text class="tm" x="852" y="355.0" font-size="11" text-anchor="end">1.2%</text>
 <line class="grid" x1="28" y1="378" x2="852" y2="378"/>
 <text class="t2" x="28" y="369.0" font-size="12.5">fast-model</text>
-<path class="s-hermes" d="M304.7,358.5 H304.7 A4.7,4.7 0 0 1 309.4,363.2 V366.8 A4.7,4.7 0 0 1 304.7,371.5 H304.7 A4.7,4.7 0 0 1 300.0,366.8 V363.2 A4.7,4.7 0 0 1 304.7,358.5 Z"/>
+<path class="s-hermes" d="M304.6,358.5 H304.6 A4.6,4.6 0 0 1 309.2,363.1 V366.9 A4.6,4.6 0 0 1 304.6,371.5 H304.6 A4.6,4.6 0 0 1 300.0,366.9 V363.1 A4.6,4.6 0 0 1 304.6,358.5 Z"/>
 <text class="tm" x="852" y="369.0" font-size="12" text-anchor="end">12M</text>
 <text class="tm" x="852" y="381.0" font-size="11" text-anchor="end">1.1%</text>
 <line class="grid" x1="28" y1="404" x2="852" y2="404"/>
 <text class="t2" x="28" y="395.0" font-size="12.5">qwen3.8-max</text>
-<path class="s-hermes" d="M303.1,384.5 H303.1 A3.1,3.1 0 0 1 306.2,387.6 V394.4 A3.1,3.1 0 0 1 303.1,397.5 H303.1 A3.1,3.1 0 0 1 300.0,394.4 V387.6 A3.1,3.1 0 0 1 303.1,384.5 Z"/>
+<path class="s-hermes" d="M303.0,384.5 H303.0 A3.0,3.0 0 0 1 306.1,387.5 V394.5 A3.0,3.0 0 0 1 303.0,397.5 H303.0 A3.0,3.0 0 0 1 300.0,394.5 V387.5 A3.0,3.0 0 0 1 303.0,384.5 Z"/>
 <text class="tm" x="852" y="395.0" font-size="12" text-anchor="end">7.9M</text>
 <text class="tm" x="852" y="407.0" font-size="11" text-anchor="end">0.7%</text>
 <line class="grid" x1="28" y1="430" x2="852" y2="430"/>
@@ -106,5 +106,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">26K</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.0%</text>
 <text class="tm" x="28" y="552" font-size="11">+4 more models (62K tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-10-31 13:02 UTC</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-10-31 16:31 UTC</text>
 </svg>
