@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.46",
+  "collectedAt": "2026-10-31T04:01:18Z",
+  "date": "2026-10-31",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 460160,
+      "costUSD": 0.068068,
+      "input": 51454,
+      "models": {
+        "deepseek-v4.1-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 460160,
+          "costUSD": 0.068068,
+          "input": 51454,
+          "output": 22757,
+          "total": 534371
+        }
+      },
+      "output": 22757,
+      "total": 552788
+    }
+  },
+  "status": "partial",
+  "timezone": "Asia/Hong_Kong"
+}
