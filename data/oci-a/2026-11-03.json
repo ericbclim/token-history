@@ -1,14 +1,14 @@
 {
   "ccusageVersion": "20.0.48",
-  "collectedAt": "2026-11-03T13:02:16Z",
+  "collectedAt": "2026-11-03T16:31:16Z",
   "date": "2026-11-03",
   "host": "oci-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
-      "cacheRead": 1445435,
-      "costUSD": 0.085518,
-      "input": 167452,
+      "cacheRead": 15413987,
+      "costUSD": 0.540265,
+      "input": 647506,
       "models": {
         "deepseek-v4.1-flash-sg": {
           "cacheCreation": 0,
@@ -20,17 +20,25 @@
         },
         "glm-5.3-flash": {
           "cacheCreation": 0,
-          "cacheRead": 645563,
-          "costUSD": 0.042946,
-          "input": 107809,
-          "output": 14816,
-          "total": 768188
+          "cacheRead": 8360571,
+          "costUSD": 0.331378,
+          "input": 393918,
+          "output": 41255,
+          "total": 8795744
+        },
+        "qoder-d/qwen3.8-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 6253544,
+          "costUSD": 0.166316,
+          "input": 193945,
+          "output": 79079,
+          "total": 6526568
         }
       },
-      "output": 27892,
-      "total": 1640779
+      "output": 133410,
+      "total": 16196595
     }
   },
-  "status": "partial",
+  "status": "final",
   "timezone": "Asia/Hong_Kong"
 }
