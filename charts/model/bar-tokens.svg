@@ -18,7 +18,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 </style>
 <rect class="bg" width="880" height="576"/>
 <text class="ts" x="28" y="32" font-size="20" font-style="italic">Tokens by model</text>
-<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-02 · 21 models · 1.2B tokens</text>
+<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-03 · 21 models · 1.2B tokens</text>
 <rect class="s-hermes" x="28" y="64" width="10" height="10" rx="2"/>
 <text class="t2" x="44" y="73" font-size="12">Hermes</text>
 <rect class="s-kilo" x="92" y="64" width="10" height="10" rx="2"/>
@@ -71,13 +71,13 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="343.0" font-size="12" text-anchor="end">13M</text>
 <text class="tm" x="852" y="355.0" font-size="11" text-anchor="end">1.1%</text>
 <line class="grid" x1="28" y1="378" x2="852" y2="378"/>
-<text class="t2" x="28" y="369.0" font-size="12.5">fast-model</text>
-<path class="s-hermes" d="M304.5,358.5 H304.5 A4.5,4.5 0 0 1 309.1,363.0 V367.0 A4.5,4.5 0 0 1 304.5,371.5 H304.5 A4.5,4.5 0 0 1 300.0,367.0 V363.0 A4.5,4.5 0 0 1 304.5,358.5 Z"/>
+<text class="t2" x="28" y="369.0" font-size="12.5">deepseek-v4.1-flash-sg</text>
+<path class="s-hermes" d="M304.6,358.5 H304.6 A4.6,4.6 0 0 1 309.1,363.1 V366.9 A4.6,4.6 0 0 1 304.6,371.5 H304.6 A4.6,4.6 0 0 1 300.0,366.9 V363.1 A4.6,4.6 0 0 1 304.6,358.5 Z"/>
 <text class="tm" x="852" y="369.0" font-size="12" text-anchor="end">12M</text>
 <text class="tm" x="852" y="381.0" font-size="11" text-anchor="end">1.0%</text>
 <line class="grid" x1="28" y1="404" x2="852" y2="404"/>
-<text class="t2" x="28" y="395.0" font-size="12.5">deepseek-v4.1-flash-sg</text>
-<path class="s-hermes" d="M304.4,384.5 H304.4 A4.4,4.4 0 0 1 308.7,388.9 V393.1 A4.4,4.4 0 0 1 304.4,397.5 H304.4 A4.4,4.4 0 0 1 300.0,393.1 V388.9 A4.4,4.4 0 0 1 304.4,384.5 Z"/>
+<text class="t2" x="28" y="395.0" font-size="12.5">fast-model</text>
+<path class="s-hermes" d="M304.5,384.5 H304.5 A4.5,4.5 0 0 1 309.1,389.0 V393.0 A4.5,4.5 0 0 1 304.5,397.5 H304.5 A4.5,4.5 0 0 1 300.0,393.0 V389.0 A4.5,4.5 0 0 1 304.5,384.5 Z"/>
 <text class="tm" x="852" y="395.0" font-size="12" text-anchor="end">12M</text>
 <text class="tm" x="852" y="407.0" font-size="11" text-anchor="end">1.0%</text>
 <line class="grid" x1="28" y1="430" x2="852" y2="430"/>
@@ -106,5 +106,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">227K</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.0%</text>
 <text class="tm" x="28" y="552" font-size="11">+5 more models (88K tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-02 16:32 UTC</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-03 04:01 UTC</text>
 </svg>
