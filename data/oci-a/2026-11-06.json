@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.48",
+  "collectedAt": "2026-11-06T04:02:16Z",
+  "date": "2026-11-06",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 300032,
+      "costUSD": 0.019283,
+      "input": 33917,
+      "models": {
+        "glm-5.3-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 300032,
+          "costUSD": 0.019283,
+          "input": 33917,
+          "output": 7131,
+          "total": 341080
+        }
+      },
+      "output": 7131,
+      "total": 344337
+    }
+  },
+  "status": "partial",
+  "timezone": "Asia/Hong_Kong"
+}
