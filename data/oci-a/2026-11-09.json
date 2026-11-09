@@ -1,26 +1,34 @@
 {
   "ccusageVersion": "20.0.48",
-  "collectedAt": "2026-11-09T04:01:16Z",
+  "collectedAt": "2026-11-09T13:02:16Z",
   "date": "2026-11-09",
   "host": "oci-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
-      "cacheRead": 952896,
-      "costUSD": 0.089873,
-      "input": 37964,
+      "cacheRead": 2804096,
+      "costUSD": 0.23582,
+      "input": 109639,
       "models": {
+        "glm-5.3-flash": {
+          "cacheCreation": 0,
+          "cacheRead": 191488,
+          "costUSD": 0.01062,
+          "input": 23985,
+          "output": 2099,
+          "total": 217572
+        },
         "hy4": {
           "cacheCreation": 0,
-          "cacheRead": 952896,
-          "costUSD": 0.089873,
-          "input": 37964,
-          "output": 6571,
-          "total": 997431
+          "cacheRead": 2612608,
+          "costUSD": 0.2252,
+          "input": 85654,
+          "output": 15316,
+          "total": 2713578
         }
       },
-      "output": 6571,
-      "total": 998133
+      "output": 17415,
+      "total": 2933898
     }
   },
   "status": "partial",
