@@ -45,19 +45,19 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <path fill="none" stroke="#1f8a70" stroke-width="1.6" stroke-linecap="round" d="M744.0,308.0 Q724.0,315.5 719.0,336.3"/>
 <path fill="none" stroke="#1f8a70" stroke-width="1.6" stroke-linecap="round" d="M717.6,331.0 L719.0,336.3 M719.0,336.3 L722.6,332.2"/>
 <text class="hx" x="750.0" y="306.0" font-size="13" text-anchor="start" font-weight="700" transform="rotate(-1.6 750.0 306.0)">HERMES</text>
-<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(-1.4 750.0 322.0)">709K*</text>
+<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(-1.4 750.0 322.0)">709K</text>
 </g>
 <g class="late">
 <path fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-linecap="round" d="M744.0,308.0 Q723.8,316.6 719.0,338.0"/>
 <path fill="none" stroke="#7a5ea8" stroke-width="1.6" stroke-linecap="round" d="M717.5,332.7 L719.0,338.0 M719.0,338.0 L722.6,333.8"/>
 <text class="hx" x="750.0" y="306.0" font-size="13" text-anchor="start" font-weight="700" transform="rotate(0.3 750.0 306.0)">KILO CODE</text>
-<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(-0.1 750.0 322.0)">0*</text>
+<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(-0.1 750.0 322.0)">0</text>
 </g>
 <g class="late">
 <path fill="none" stroke="#b23a6b" stroke-width="1.6" stroke-linecap="round" d="M744.0,308.0 Q723.8,316.6 719.0,338.0"/>
 <path fill="none" stroke="#b23a6b" stroke-width="1.6" stroke-linecap="round" d="M717.5,332.7 L719.0,338.0 M719.0,338.0 L722.6,333.8"/>
 <text class="hx" x="750.0" y="306.0" font-size="13" text-anchor="start" font-weight="700" transform="rotate(0.3 750.0 306.0)">KIMI</text>
-<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(0.4 750.0 322.0)">0*</text>
+<text class="hx2" x="750.0" y="322.0" font-size="12" text-anchor="start" transform="rotate(0.4 750.0 322.0)">0</text>
 </g>
 <g class="late">
 <path class="ink" stroke-width="1.6" d="M425.5,102.2 Q429.4,105.5 429.5,107.3 Q429.7,109.2 431.1,110.9 Q432.5,112.7 431.4,114.4 Q430.3,116.1 429.1,118.2 Q427.9,120.3 426.5,121.9 Q425.1,123.6 423.6,124.7 Q422.2,125.8 419.8,126.4 Q417.3,126.9 415.0,127.5 Q412.7,128.0 410.3,127.7 Q407.8,127.3 405.6,128.1 Q403.4,128.8 401.2,127.0 Q398.9,125.1 396.7,124.0 Q394.5,122.9 392.9,121.7 Q391.4,120.6 390.7,119.1 Q390.1,117.5 388.8,115.5 Q387.4,113.4 388.3,111.4 Q389.1,109.4 389.1,107.6 Q389.1,105.8 391.2,104.0 Q393.2,102.2 395.1,100.6 Q397.1,99.0 399.1,99.1 Q401.2,99.3 403.3,97.8 Q405.5,96.3 408.0,96.8 Q410.5,97.3 412.9,96.4 Q415.2,95.5 417.5,97.0 Q419.9,98.4 422.1,99.4 Q424.3,100.3 426.0,102.4 Q427.7,104.4 429.0,105.9 Q430.2,107.3 430.4,108.9 Q430.6,110.5 430.9,112.5 L431.2,114.5"/>
@@ -66,5 +66,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="hx" x="526.8" y="88.0" font-size="13.5" text-anchor="start" font-weight="700" transform="rotate(0.6 526.8 88.0)">THE DAY THE AGENTS TOOK OVER</text>
 <text class="hx2" x="528.8" y="105.0" font-size="12" text-anchor="start" transform="rotate(1.3 528.8 105.0)">(94M tokens. one day. oct 27.)</text>
 </g>
-<text class="hxm" x="28.0" y="386.0" font-size="11" text-anchor="start" transform="rotate(-0.5 28.0 386.0)">Generated 2026-11-10 13:02 UTC</text>
+<text class="hxm" x="28.0" y="386.0" font-size="11" text-anchor="start" transform="rotate(-0.5 28.0 386.0)">Generated 2026-11-10 16:32 UTC</text>
 </svg>
