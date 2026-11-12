@@ -18,7 +18,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 </style>
 <rect class="bg" width="880" height="576"/>
 <text class="ts" x="28" y="32" font-size="20" font-style="italic">Tokens by model</text>
-<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-11 · 25 models · 1.2B tokens</text>
+<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-12 · 25 models · 1.2B tokens</text>
 <rect class="s-hermes" x="28" y="64" width="10" height="10" rx="2"/>
 <text class="t2" x="44" y="73" font-size="12">Hermes</text>
 <rect class="s-kilo" x="92" y="64" width="10" height="10" rx="2"/>
@@ -29,12 +29,12 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="t" x="28" y="135.0" font-size="12.5" font-weight="700">deepseek-v4.1-flash</text>
 <path class="s-hermes" d="M306.0,124.5 H696.0 A6.0,6.0 0 0 1 702.0,130.5 V131.5 A6.0,6.0 0 0 1 696.0,137.5 H306.0 A6.0,6.0 0 0 1 300.0,131.5 V130.5 A6.0,6.0 0 0 1 306.0,124.5 Z"/>
 <text class="tm" x="852" y="135.0" font-size="12" text-anchor="end">532M</text>
-<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">45.0%</text>
+<text class="tm" x="852" y="147.0" font-size="11" text-anchor="end">44.9%</text>
 <line class="grid" x1="28" y1="170" x2="852" y2="170"/>
 <text class="t2" x="28" y="161.0" font-size="12.5">mimo-v2.5-pro</text>
 <path class="s-kilo" d="M306.0,150.5 H432.2 A6.0,6.0 0 0 1 438.2,156.5 V157.5 A6.0,6.0 0 0 1 432.2,163.5 H306.0 A6.0,6.0 0 0 1 300.0,157.5 V156.5 A6.0,6.0 0 0 1 306.0,150.5 Z"/>
 <text class="tm" x="852" y="161.0" font-size="12" text-anchor="end">183M</text>
-<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">15.5%</text>
+<text class="tm" x="852" y="173.0" font-size="11" text-anchor="end">15.4%</text>
 <line class="grid" x1="28" y1="196" x2="852" y2="196"/>
 <text class="t2" x="28" y="187.0" font-size="12.5">qwen3.8-flash</text>
 <path class="s-hermes" d="M306.0,176.5 H383.8 A6.0,6.0 0 0 1 389.8,182.5 V183.5 A6.0,6.0 0 0 1 383.8,189.5 H306.0 A6.0,6.0 0 0 1 300.0,183.5 V182.5 A6.0,6.0 0 0 1 306.0,176.5 Z"/>
@@ -96,15 +96,15 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="473.0" font-size="12" text-anchor="end">4.6M</text>
 <text class="tm" x="852" y="485.0" font-size="11" text-anchor="end">0.4%</text>
 <line class="grid" x1="28" y1="508" x2="852" y2="508"/>
-<text class="t2" x="28" y="499.0" font-size="12.5">hy4</text>
-<path class="s-hermes" d="M301.6,488.5 H301.6 A1.6,1.6 0 0 1 303.1,490.1 V499.9 A1.6,1.6 0 0 1 301.6,501.5 H301.6 A1.6,1.6 0 0 1 300.0,499.9 V490.1 A1.6,1.6 0 0 1 301.6,488.5 Z"/>
-<text class="tm" x="852" y="499.0" font-size="12" text-anchor="end">4.1M</text>
-<text class="tm" x="852" y="511.0" font-size="11" text-anchor="end">0.3%</text>
+<text class="t2" x="28" y="499.0" font-size="12.5">hy4free</text>
+<path class="s-hermes" d="M301.7,488.5 H301.7 A1.7,1.7 0 0 1 303.5,490.2 V499.8 A1.7,1.7 0 0 1 301.7,501.5 H301.7 A1.7,1.7 0 0 1 300.0,499.8 V490.2 A1.7,1.7 0 0 1 301.7,488.5 Z"/>
+<text class="tm" x="852" y="499.0" font-size="12" text-anchor="end">4.6M</text>
+<text class="tm" x="852" y="511.0" font-size="11" text-anchor="end">0.4%</text>
 <line class="grid" x1="28" y1="534" x2="852" y2="534"/>
-<text class="t2" x="28" y="525.0" font-size="12.5">deepseek-flash</text>
-<path class="s-hermes" d="M300.8,514.5 H300.8 A0.8,0.8 0 0 1 301.6,515.3 V526.7 A0.8,0.8 0 0 1 300.8,527.5 H300.8 A0.8,0.8 0 0 1 300.0,526.7 V515.3 A0.8,0.8 0 0 1 300.8,514.5 Z"/>
-<text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">2.2M</text>
-<text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.2%</text>
-<text class="tm" x="28" y="552" font-size="11">+9 more models (2.8M tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-11 16:31 UTC</text>
+<text class="t2" x="28" y="525.0" font-size="12.5">hy4</text>
+<path class="s-hermes" d="M301.6,514.5 H301.6 A1.6,1.6 0 0 1 303.1,516.1 V525.9 A1.6,1.6 0 0 1 301.6,527.5 H301.6 A1.6,1.6 0 0 1 300.0,525.9 V516.1 A1.6,1.6 0 0 1 301.6,514.5 Z"/>
+<text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">4.1M</text>
+<text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.3%</text>
+<text class="tm" x="28" y="552" font-size="11">+9 more models (2.9M tokens)</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-12 04:02 UTC</text>
 </svg>
