@@ -66,12 +66,12 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="317.0" font-size="12" text-anchor="end">24M</text>
 <text class="tm" x="852" y="329.0" font-size="11" text-anchor="end">2.0%</text>
 <line class="grid" x1="28" y1="352" x2="852" y2="352"/>
-<text class="t2" x="28" y="343.0" font-size="12.5">step-5-preview</text>
-<path class="s-hermes" d="M305.0,332.5 H305.0 A5.0,5.0 0 0 1 310.0,337.5 V340.5 A5.0,5.0 0 0 1 305.0,345.5 H305.0 A5.0,5.0 0 0 1 300.0,340.5 V337.5 A5.0,5.0 0 0 1 305.0,332.5 Z"/>
-<text class="tm" x="852" y="343.0" font-size="12" text-anchor="end">13M</text>
-<text class="tm" x="852" y="355.0" font-size="11" text-anchor="end">1.1%</text>
+<text class="t2" x="28" y="343.0" font-size="12.5">hy4free</text>
+<path class="s-hermes" d="M305.4,332.5 H305.4 A5.4,5.4 0 0 1 310.9,337.9 V340.1 A5.4,5.4 0 0 1 305.4,345.5 H305.4 A5.4,5.4 0 0 1 300.0,340.1 V337.9 A5.4,5.4 0 0 1 305.4,332.5 Z"/>
+<text class="tm" x="852" y="343.0" font-size="12" text-anchor="end">14M</text>
+<text class="tm" x="852" y="355.0" font-size="11" text-anchor="end">1.2%</text>
 <line class="grid" x1="28" y1="378" x2="852" y2="378"/>
-<text class="t2" x="28" y="369.0" font-size="12.5">hy4free</text>
+<text class="t2" x="28" y="369.0" font-size="12.5">step-5-preview</text>
 <path class="s-hermes" d="M305.0,358.5 H305.0 A5.0,5.0 0 0 1 310.0,363.5 V366.5 A5.0,5.0 0 0 1 305.0,371.5 H305.0 A5.0,5.0 0 0 1 300.0,366.5 V363.5 A5.0,5.0 0 0 1 305.0,358.5 Z"/>
 <text class="tm" x="852" y="369.0" font-size="12" text-anchor="end">13M</text>
 <text class="tm" x="852" y="381.0" font-size="11" text-anchor="end">1.1%</text>
@@ -106,5 +106,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">4.1M</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.3%</text>
 <text class="tm" x="28" y="552" font-size="11">+9 more models (2.9M tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-17 04:02 UTC</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-17 13:01 UTC</text>
 </svg>
