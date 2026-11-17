@@ -1,26 +1,26 @@
 {
   "ccusageVersion": "20.0.51",
-  "collectedAt": "2026-11-17T04:02:16Z",
+  "collectedAt": "2026-11-17T13:01:16Z",
   "date": "2026-11-17",
   "host": "oci-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
-      "cacheRead": 1203328,
+      "cacheRead": 2291776,
       "costUSD": 0.0,
-      "input": 89411,
+      "input": 186246,
       "models": {
         "hy4free": {
           "cacheCreation": 0,
-          "cacheRead": 1203328,
+          "cacheRead": 2291776,
           "costUSD": 0.0,
-          "input": 89411,
-          "output": 61449,
-          "total": 1354188
+          "input": 186246,
+          "output": 126245,
+          "total": 2604267
         }
       },
-      "output": 61449,
-      "total": 1399596
+      "output": 126245,
+      "total": 2701353
     }
   },
   "status": "partial",
