@@ -1,0 +1,28 @@
+{
+  "ccusageVersion": "20.0.51",
+  "collectedAt": "2026-11-19T04:01:16Z",
+  "date": "2026-11-19",
+  "host": "oci-a",
+  "sources": {
+    "hermes": {
+      "cacheCreation": 0,
+      "cacheRead": 3427008,
+      "costUSD": 0.0,
+      "input": 4918026,
+      "models": {
+        "hy4flash-free": {
+          "cacheCreation": 0,
+          "cacheRead": 3427008,
+          "costUSD": 0.0,
+          "input": 4918026,
+          "output": 79029,
+          "total": 8424063
+        }
+      },
+      "output": 79029,
+      "total": 8429893
+    }
+  },
+  "status": "partial",
+  "timezone": "Asia/Hong_Kong"
+}
