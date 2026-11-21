@@ -39,7 +39,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="t2" x="28" y="187.0" font-size="12.5">qwen3.8-flash</text>
 <path class="s-hermes" d="M306.0,176.5 H383.8 A6.0,6.0 0 0 1 389.8,182.5 V183.5 A6.0,6.0 0 0 1 383.8,189.5 H306.0 A6.0,6.0 0 0 1 300.0,183.5 V182.5 A6.0,6.0 0 0 1 306.0,176.5 Z"/>
 <text class="tm" x="852" y="187.0" font-size="12" text-anchor="end">119M</text>
-<text class="tm" x="852" y="199.0" font-size="11" text-anchor="end">9.7%</text>
+<text class="tm" x="852" y="199.0" font-size="11" text-anchor="end">9.6%</text>
 <line class="grid" x1="28" y1="222" x2="852" y2="222"/>
 <text class="t2" x="28" y="213.0" font-size="12.5">kimi-k3-1</text>
 <path class="s-hermes" d="M306.0,202.5 H376.5 A6.0,6.0 0 0 1 382.5,208.5 V209.5 A6.0,6.0 0 0 1 376.5,215.5 H306.0 A6.0,6.0 0 0 1 300.0,209.5 V208.5 A6.0,6.0 0 0 1 306.0,202.5 Z"/>
@@ -62,9 +62,9 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="303.0" font-size="11" text-anchor="end">3.7%</text>
 <line class="grid" x1="28" y1="326" x2="852" y2="326"/>
 <text class="t2" x="28" y="317.0" font-size="12.5">hy4flash-free</text>
-<path class="s-hermes" d="M306.0,306.5 H319.5 A6.0,6.0 0 0 1 325.5,312.5 V313.5 A6.0,6.0 0 0 1 319.5,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
-<text class="tm" x="852" y="317.0" font-size="12" text-anchor="end">34M</text>
-<text class="tm" x="852" y="329.0" font-size="11" text-anchor="end">2.7%</text>
+<path class="s-hermes" d="M306.0,306.5 H320.1 A6.0,6.0 0 0 1 326.1,312.5 V313.5 A6.0,6.0 0 0 1 320.1,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
+<text class="tm" x="852" y="317.0" font-size="12" text-anchor="end">35M</text>
+<text class="tm" x="852" y="329.0" font-size="11" text-anchor="end">2.8%</text>
 <line class="grid" x1="28" y1="352" x2="852" y2="352"/>
 <text class="t2" x="28" y="343.0" font-size="12.5">kimi-k3</text>
 <path class="s-kilo" d="M306.0,332.5 H311.9 A6.0,6.0 0 0 1 317.9,338.5 V339.5 A6.0,6.0 0 0 1 311.9,345.5 H306.0 A6.0,6.0 0 0 1 300.0,339.5 V338.5 A6.0,6.0 0 0 1 306.0,332.5 Z"/>
@@ -106,5 +106,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">4.6M</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.4%</text>
 <text class="tm" x="28" y="552" font-size="11">+10 more models (7.1M tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-21 04:01 UTC</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-21 13:03 UTC</text>
 </svg>
