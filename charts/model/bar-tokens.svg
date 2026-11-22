@@ -18,7 +18,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 </style>
 <rect class="bg" width="880" height="576"/>
 <text class="ts" x="28" y="32" font-size="20" font-style="italic">Tokens by model</text>
-<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-21 · 26 models · 1.2B tokens</text>
+<text class="t2" x="28" y="52" font-size="12">2026-05-24 – 2026-11-22 · 26 models · 1.2B tokens</text>
 <rect class="s-hermes" x="28" y="64" width="10" height="10" rx="2"/>
 <text class="t2" x="44" y="73" font-size="12">Hermes</text>
 <rect class="s-kilo" x="92" y="64" width="10" height="10" rx="2"/>
@@ -62,7 +62,7 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="303.0" font-size="11" text-anchor="end">3.7%</text>
 <line class="grid" x1="28" y1="326" x2="852" y2="326"/>
 <text class="t2" x="28" y="317.0" font-size="12.5">hy4flash-free</text>
-<path class="s-hermes" d="M306.0,306.5 H320.1 A6.0,6.0 0 0 1 326.1,312.5 V313.5 A6.0,6.0 0 0 1 320.1,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
+<path class="s-hermes" d="M306.0,306.5 H320.4 A6.0,6.0 0 0 1 326.4,312.5 V313.5 A6.0,6.0 0 0 1 320.4,319.5 H306.0 A6.0,6.0 0 0 1 300.0,313.5 V312.5 A6.0,6.0 0 0 1 306.0,306.5 Z"/>
 <text class="tm" x="852" y="317.0" font-size="12" text-anchor="end">35M</text>
 <text class="tm" x="852" y="329.0" font-size="11" text-anchor="end">2.8%</text>
 <line class="grid" x1="28" y1="352" x2="852" y2="352"/>
@@ -106,5 +106,5 @@ svg{--f:Poppins,Arial,"Helvetica Neue",sans-serif;--fs:Lora,Georgia,"Iowan Old S
 <text class="tm" x="852" y="525.0" font-size="12" text-anchor="end">4.6M</text>
 <text class="tm" x="852" y="537.0" font-size="11" text-anchor="end">0.4%</text>
 <text class="tm" x="28" y="552" font-size="11">+10 more models (7.1M tokens)</text>
-<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-21 16:31 UTC</text>
+<text class="tm" x="28" y="562" font-size="10.5">Generated 2026-11-22 04:02 UTC</text>
 </svg>
