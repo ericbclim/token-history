@@ -1,28 +1,28 @@
 {
   "ccusageVersion": "20.0.51",
-  "collectedAt": "2026-11-22T13:00:50Z",
+  "collectedAt": "2026-11-22T16:32:50Z",
   "date": "2026-11-22",
   "host": "oci-a",
   "sources": {
     "hermes": {
       "cacheCreation": 0,
-      "cacheRead": 311104,
+      "cacheRead": 329280,
       "costUSD": 0.0,
-      "input": 54676,
+      "input": 65144,
       "models": {
         "hy4flash-free": {
           "cacheCreation": 0,
-          "cacheRead": 311104,
+          "cacheRead": 329280,
           "costUSD": 0.0,
-          "input": 54676,
-          "output": 23587,
-          "total": 389367
+          "input": 65144,
+          "output": 24958,
+          "total": 419382
         }
       },
-      "output": 23587,
-      "total": 404306
+      "output": 24958,
+      "total": 434760
     }
   },
-  "status": "partial",
+  "status": "final",
   "timezone": "Asia/Hong_Kong"
 }
