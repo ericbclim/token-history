@@ -1,6 +1,6 @@
 {
-  "ccusageVersion": "20.0.51",
-  "collectedAt": "2026-11-23T04:01:50Z",
+  "ccusageVersion": "20.1.0",
+  "collectedAt": "2026-11-23T13:01:50Z",
   "date": "2026-11-22",
   "host": "oci-a",
   "sources": {
@@ -20,7 +20,7 @@
         }
       },
       "output": 24958,
-      "total": 434760
+      "total": 419382
     }
   },
   "status": "final",
